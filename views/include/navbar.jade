@@ -1,0 +1,20 @@
+// @author Alexander Marenin
+// @date July 2014
+
+
+header#main-menu.navbar.navbar-default(role="banner", class=pageName)
+    .container-fluid
+        .navbar-header
+            button.navbar-toggle(type='button', data-toggle='collapse', data-target='#main-nav')
+                span.sr-only Toggle navigation
+                span.icon-bar
+                span.icon-bar
+                span.icon-bar
+            a#logo.navbar-brand.header(href='/')=title
+
+        nav#main-nav.collapse.navbar-collapse(role='navigation')
+            ul.nav.navbar-nav.navbar-right
+                li(class=pageName === 'index' ? 'active' : '' )
+                    a(href=route.INDEX) Screenshots
+                li(class=pageName === 'log' ? 'active' : '' )
+                    a(href=route.LOG) Logs
