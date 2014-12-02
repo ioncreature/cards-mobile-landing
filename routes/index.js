@@ -11,6 +11,7 @@ var router = require( 'express' ).Router(),
     async = require( 'async' ),
     join = require( 'path' ).join,
     config = registry.get( 'config' ),
+    uaParser = require( 'user-agent-parser' ),
     route = config.route;
 
 module.exports = router;
@@ -31,6 +32,7 @@ router.get( route.INDEX, function( req, res ){
 // TODO: mock
 
 function getAgentHardware( req ){
+    console.log( uaParser(req.header( 'User-Agent' )) );
     return req.header( 'User-Agent' );
 }
 

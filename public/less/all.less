@@ -1,9 +1,96 @@
 /**
  * @author Alexander Marenin
- * @date July 2014
+ * @date November 2014
  */
 
 @import "../bower/bootstrap/less/bootstrap";
-@import "fonts";
-@import "layout";
 
+@font-family: 'Open Sans', sans-serif;
+
+body {
+    font-family: @font-family;
+    font-size: 15px;
+}
+
+h1, h2, h3 {
+    font-family: @font-family;
+    font-style: italic;
+}
+
+h2 {
+    font-size: 28px;
+}
+
+.row.logo {
+    height: 80px;
+    background: transparent url(/public/img/nfc-wallet.png) center center no-repeat;
+}
+
+.row.banner {
+    min-height: 480px;
+    background: transparent url(/public/img/store.jpg) center center no-repeat;
+    background-size: cover;
+    padding-bottom: 0;
+
+    .col-sm-12 {
+        height: 480px;
+        margin: 0 auto;
+        padding: 0;
+        background: transparent url(/public/img/mastercard.png) center bottom no-repeat;
+        text-align: center;
+        h2 {
+            margin: 40px auto;
+            color: white;
+            color: rgba(255, 255, 255, 0.9);
+        }
+    }
+}
+
+.row.desktop {
+    p {
+        padding: 40px 20px 10px;
+        text-align: center;
+    }
+
+    h2 {
+        text-align: center;
+    }
+    
+    table {
+        margin: 20px auto;
+        color: #777;
+
+        td {
+            padding: 8px 16px;
+        }
+    }
+}
+
+form {
+    display: block;
+    margin: 20px auto;
+    text-align: center;
+
+    input[name="model"], input[name="email"], input[type="submit"] {
+        padding: 10px 15px;
+        border: 1px solid #aaa;
+        margin-bottom: 15px;
+        border-radius: 4px;
+    }
+
+    input[name="model"] {
+        width: 320px;
+    }
+
+    input[name="email"] {
+        width: 240px;
+        margin-right: 15px;
+    }
+
+    input[type="submit"] {
+        width: 65px;
+        border: 1px solid #F15A29;
+        background-color: #F15A29;
+        color: white;
+    }
+}

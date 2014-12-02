@@ -10,26 +10,49 @@ html(lang='en')
         meta(http-equiv='X-UA-Compatible', content='IE=edge')
         meta(name='viewport', content='width=device-width, initial-scale=1')
         link(href='/public/css/all.css', rel='stylesheet')
-        link(href='http://fonts.googleapis.com/css?family=Open+Sans:300italic&subset=cyrillic,latin', rel='stylesheet', type='text/css')
+        link(href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400&subset=latin,cyrillic', rel='stylesheet', type='text/css')
         link(href='/favicon.ico', rel='shortcut icon' type='image/x-icon')
     body(class=pageName)
         .container-fluid
             .row.logo
             .row.banner
                 .col-sm-12
-                    p
+                    h2
                         | Оплачивайте покупки
                         br
                         | прикосновением телефона
             if isMobile
                 .row.mobile
-                    h1 Hi, mobile!
+                    h2 Hi, mobile!
             else
                 .row.desktop
-                    h2
+                    p
                         | Для установки приложения на совместимую модель телефона
-                        br
                         | откройте эту страницу со смартфона
+                    h2 Совместимые модели телефонов
+                    table
+                        tr
+                            td HTC One M8
+                            td Sony Xpreia Z
+                        tr
+                            td HTC One E8
+                            td Philips W5888
+                        tr
+                            td HTC One M7
+                            td Philips W336
+                        tr
+                            td HTC One Max
+                            td
+                        tr
+                            td HTC One SV
+                            td
+                    p Мы сообщим вам о появлении «Кошелька» для вашей модели телефона
+                    form#desktop(action=route.INDEX, method='POST')
+                        input(type='text', name='model', placeholder='Укажите Вашу модель телефона')
+                        br
+                        input(type='email', name='email', placeholder='Ваш e-mail')
+                        input(type='submit', value='OK')
 
 script(src='/public/bower/jquery/dist/jquery.min.js')
         script(src='/public/bower/bootstrap/dist/js/bootstrap.min.js')
+        script(src='/public/js/index.js')
