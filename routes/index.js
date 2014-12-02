@@ -30,6 +30,18 @@ router.get( route.INDEX, function( req, res ){
 });
 
 
+router.post( route.INDEX, function( req, res ){
+    var ua = uaParser( req.header('User-Agent') ),
+        model = ua.device.model || req.body.model,
+        email = req.body.email;
+
+    if ( model && email )
+        fs.appendFileSync( config.subscribers, email + ' ' + model );
+
+    res.end();
+});
+
+
 // TODO: mock
 
 function getAgentHardware( req ){

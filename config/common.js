@@ -20,3 +20,5 @@ exports.route = {
 };
 
 exports.availableModels = [];
+
+exports.subscribers = join(__dirname, '..', 'subscribers' );
