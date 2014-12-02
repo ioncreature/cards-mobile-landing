@@ -11,7 +11,6 @@ var router = require( 'express' ).Router(),
     async = require( 'async' ),
     join = require( 'path' ).join,
     config = registry.get( 'config' ),
-    screenShooter = registry.get( 'screenShooter' ),
     route = config.route;
 
 module.exports = router;
@@ -21,10 +20,10 @@ router.get( route.INDEX, function( req, res ){
     var agentHardware = getAgentHardware( req ),
         phoneModel = config.availableModels[agentHardware];
 
-    res.render( 'page/index', {
+    res.render( 'landing', {
         isMobile: isMobile( agentHardware ),
         isModelOk: !!phoneModel,
-        phoneModel: phoneModel
+        phoneModel: agentHardware
     });
 });
 
@@ -37,5 +36,5 @@ function getAgentHardware( req ){
 
 
 function isMobile( agentHardware ){
-    return !!agentHardware;
+    return false;
 }

@@ -1,0 +1,35 @@
+// @author Alexander Marenin
+// @date November 2014
+
+
+doctype html
+html(lang='en')
+    head
+        title= title
+        meta(charset='utf-8')
+        meta(http-equiv='X-UA-Compatible', content='IE=edge')
+        meta(name='viewport', content='width=device-width, initial-scale=1')
+        link(href='/public/css/all.css', rel='stylesheet')
+        link(href='http://fonts.googleapis.com/css?family=Open+Sans:300italic&subset=cyrillic,latin', rel='stylesheet', type='text/css')
+        link(href='/favicon.ico', rel='shortcut icon' type='image/x-icon')
+    body(class=pageName)
+        .container-fluid
+            .row.logo
+            .row.banner
+                .col-sm-12
+                    p
+                        | Оплачивайте покупки
+                        br
+                        | прикосновением телефона
+            if isMobile
+                .row.mobile
+                    h1 Hi, mobile!
+            else
+                .row.desktop
+                    h2
+                        | Для установки приложения на совместимую модель телефона
+                        br
+                        | откройте эту страницу со смартфона
+
+script(src='/public/bower/jquery/dist/jquery.min.js')
+        script(src='/public/bower/bootstrap/dist/js/bootstrap.min.js')

@@ -5,7 +5,7 @@
 
 var join = require( 'path' ).join;
 
-exports.title = 'Device Monitor';
+exports.title = 'Cards Mobile';
 
 exports.processTitle = 'device-monitor';
 
