@@ -18,13 +18,14 @@ module.exports = router;
 
 
 router.get( route.INDEX, function( req, res ){
-    var agentHardware = getAgentHardware( req ),
-        phoneModel = config.availableModels[agentHardware];
+    var ua = uaParser( req.header('User-Agent') ),
+        model = ua.device.model,
+        isMobile = ua.device.type === 'mobile';
 
     res.render( 'landing', {
-        isMobile: isMobile( agentHardware ),
-        isModelOk: !!phoneModel,
-        phoneModel: agentHardware
+        isMobile: isMobile,
+        isModelOk: isMobile && config.availableModels.indexOf( model ) > -1,
+        phoneModel: model
     });
 });
 
