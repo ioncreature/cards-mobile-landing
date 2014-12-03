@@ -29,8 +29,7 @@ router.get( route.INDEX, function( req, res ){
     res.render( 'landing', {
         isMobile: isMobile,
         model: model,
-        isModelOk: true
-        //isModelOk: isMobile && config.availableModels.indexOf( model ) > -1
+        isModelOk: isAvailable( model )
     });
 });
 
@@ -41,7 +40,7 @@ router.post( route.INDEX, function( req, res ){
         email = req.body.email;
 
     if ( model && email )
-        fs.appendFile( config.subscribers, [new Date, email, model, '\n'].join(';'), util.noop );
+        fs.appendFile( config.subscribers, JSON.stringify([(new Date).toISOString(), email, model, ua]) + '\n', util.noop );
 
     res.end();
 });
@@ -49,13 +48,27 @@ router.post( route.INDEX, function( req, res ){
 
 function getModel( userAgent ){
     try {
-        var device = userAgent
-            .match( /\([^\(]*\)/ )[0]
-            .replace( /[\(\)]/g, '' )
-            .split( ';' )[2];
+        var info = userAgent
+                .match( /\([^\(]*\)/ )[0]
+                .replace( /[\(\)]/g, '' )
+                .split( ';' ),
+            device = info.pop().split( 'Build' )[0];
         return device && device.trim();
     } catch ( e ){
         console.log( 'error', e );
         return false;
     }
+}
+
+
+function isAvailable( model ){
+    var m = model && model.toLowerCase();
+    return m && config.availableModels.some( function( item ){
+        return item === m || m.indexOf( item ) > -1
+    });
+}
+
+
+function translateModel( model ){
+    return config.modelAliases[model] || model;
 }

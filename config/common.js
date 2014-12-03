@@ -19,6 +19,21 @@ exports.route = {
     PUBLIC_CSS: '/public/css'
 };
 
-exports.availableModels = [];
+exports.availableModels = [
+    'nexus 5', // На самом деле нет
+    'htc one_m8',
+    'htc one_m7',
+    'htc one max',
+    'htc one_e8 dual sim',
+    'htc one_e8',
+    'htc one s',
+    'c6833', // Sony Xperia Z
+    'philips w336',
+    'philips w5888' // Нигде не нашел юзер агента этого девайса, выдумал сам.
+];
+
+exports.modelAliases = {
+    'c6833': 'Sony Xperia Z'
+};
 
 exports.subscribers = join(__dirname, '..', 'subscribers' );
