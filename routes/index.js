@@ -27,7 +27,7 @@ router.get( route.INDEX, function( req, res ){
     console.log( md );
     console.log( model );
 
-    fs.appendFile( config.userAgents, (new Date).toISOString() + ': ' + ua );
+    fs.appendFile( config.userAgents, (new Date).toISOString() + ': ' + ua + '\n' );
 
     res.render( 'landing', {
         isMobile: isMobile,
