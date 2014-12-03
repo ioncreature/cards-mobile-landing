@@ -11,21 +11,21 @@ var router = require( 'express' ).Router(),
     async = require( 'async' ),
     join = require( 'path' ).join,
     config = registry.get( 'config' ),
-    uaParser = require( 'user-agent-parser' ),
+    MobileDetect = require( 'mobile-detect' ),
     route = config.route;
 
 module.exports = router;
 
 
 router.get( route.INDEX, function( req, res ){
-    var ua = uaParser( req.header('User-Agent') ),
-        model = ua.device.model,
-        isMobile = ua.device.type === 'mobile';
+    var ua = new MobileDetect( req.header('User-Agent') ),
+        isMobile = ua.phone();
 
+    console.log( isMobile );
+    console.log( ua );
     res.render( 'landing', {
         isMobile: isMobile,
-        isModelOk: isMobile && config.availableModels.indexOf( model ) > -1,
-        phoneModel: model
+        isModelOk: isMobile && config.availableModels.indexOf( isMobile ) > -1
     });
 });
 

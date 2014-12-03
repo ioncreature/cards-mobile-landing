@@ -14,6 +14,7 @@
         "less-middleware": "1.0.x",
         "async": "0.9.x",
         "yahel": "*",
+        "mobile-detect": "0.4.x",
         "user-agent-parser": "0.6.x"
     },
     "engines": {
