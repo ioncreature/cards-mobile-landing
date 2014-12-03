@@ -20,16 +20,18 @@ router.get( route.INDEX, function( req, res ){
     var ua = req.header( 'User-Agent' ),
         md = new MobileDetect( ua ),
         isMobile = md.phone(),
-        model = isMobile && getModel( ua );
+        model = isMobile && getModel( ua ),
+        modelName = model && getModelName( model );
 
     console.log( ua );
     console.log( md );
     console.log( model );
 
+    fs.appendFile( config.userAgents, (new Date).toISOString() + ': ' + ua );
+
     res.render( 'landing', {
         isMobile: isMobile,
-        model: model,
-        isModelOk: isAvailable( model )
+        modelName: modelName
     });
 });
 
@@ -61,14 +63,7 @@ function getModel( userAgent ){
 }
 
 
-function isAvailable( model ){
+function getModelName( model ){
     var m = model && model.toLowerCase();
-    return m && config.availableModels.some( function( item ){
-        return item === m || m.indexOf( item ) > -1
-    });
-}
-
-
-function translateModel( model ){
-    return config.modelAliases[model] || model;
+    return m && config.modelAliases[m];
 }

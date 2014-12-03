@@ -22,13 +22,13 @@ html(lang='en')
                         br
                         | прикосновением телефона
             if isMobile
-                if isModelOk
+                if modelName
                     .row.mobile
                         p
                             | Скачайте приложение
                             br
                             | для Вашего смартфона
-                        h2= model
+                        h2= modelName
                         a(href="#") СКАЧАТЬ
                 else
                     .row.mobile
