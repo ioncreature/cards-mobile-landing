@@ -22,11 +22,14 @@ exports.route = {
 exports.availableModels = [
     'nexus 5', // На самом деле нет
     'htc one_m8',
+    'htc_one_m8',
+    'htc_one',
     'htc one_m7',
     'htc one max',
     'htc one_e8 dual sim',
     'htc one_e8',
     'htc one s',
+    'htc_onesv',
     'c6833', // Sony Xperia Z
     'philips w336',
     'philips w5888' // Нигде не нашел юзер агента этого девайса, выдумал сам.
