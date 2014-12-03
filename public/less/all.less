@@ -3,19 +3,52 @@
  * @date November 2014
  */
 
-@import "../bower/bootstrap/less/bootstrap";
-
 @font-family: 'Open Sans', sans-serif;
 
 body {
     font-family: @font-family;
     font-size: 16px;
+    line-height: 1.42;
+    color: #333;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html, body, div {
+    margin: 0;
+    padding: 0;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
 }
 
 h2 {
     font-family: @font-family;
     font-style: italic;
+    font-weight: normal;
     font-size: 29px;
+    margin: 20px 0 10px;
+    line-height: 1.1;
+}
+
+a {
+    text-decoration: none;
+}
+
+p {
+    margin: 0 0 10px;
+}
+
+input, button, select, textarea {
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    color: inherit;
+    margin: 0;
 }
 
 @media(max-width:768px) {
