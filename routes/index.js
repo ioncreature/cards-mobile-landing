@@ -23,15 +23,12 @@ router.get( route.INDEX, function( req, res ){
         model = isMobile && getModel( ua ),
         modelName = model && getModelName( model );
 
-    console.log( ua );
-    console.log( md );
-    console.log( model );
-
     fs.appendFile( config.userAgents, (new Date).toISOString() + ': ' + ua + '\n' );
 
     res.render( 'landing', {
         isMobile: isMobile,
-        modelName: modelName
+        modelName: modelName,
+        url: modelName ? config.appUrls[modelName] : ''
     });
 });
 

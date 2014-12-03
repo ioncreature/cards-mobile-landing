@@ -29,14 +29,16 @@ html(lang='en')
                             br
                             | для Вашего смартфона
                         h2= modelName
-                        a(href="#") СКАЧАТЬ
+                        if url
+                            a(href=url) СКАЧАТЬ
+                        else
+                            p Нет ссылки для скачивания
                 else
                     .row.mobile
                         p
                             | Ваш смартфон
                             br
                             | пока не поддерживается
-
                         p
                             | Узнайте о появлении
                             br
@@ -59,7 +61,7 @@ html(lang='en')
                             td Sony Xperia Z
                         tr
                             td HTC One E8
-                            td Philips W5888
+                            td Philips W8555
                         tr
                             td HTC One M7
                             td Philips W336
