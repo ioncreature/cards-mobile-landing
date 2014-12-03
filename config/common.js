@@ -26,8 +26,8 @@ exports.availableModels = [
     'htc_one',
     'htc one_m7',
     'htc one max',
-    'htc one_e8 dual sim',
     'htc one_e8',
+    'htc one_e8 dual sim',
     'htc one s',
     'htc_onesv',
     'c6603', // Sony Xperia Z
@@ -37,7 +37,15 @@ exports.availableModels = [
 ];
 
 exports.modelAliases = {
-    'c6833': 'Sony Xperia Z'
+    'c6833': 'Sony Xperia Z',
+    'C6603': 'Sony Xperia Z',
+    'htc one_m7': 'HTC One M7',
+    'htc one_m8': 'HTC One M8',
+    'htc_one_m8': 'HTC One M8',
+    'htc_one': 'HTC One',
+    'htc_onesv': 'HTC One SV',
+    'htc one_e8': 'HTC One E8',
+    'htc one_e8 dual sim': 'HTC One E8 Dual SIM'
 };
 
 exports.subscribers = join(__dirname, '..', 'subscribers' );
