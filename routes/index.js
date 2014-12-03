@@ -40,16 +40,3 @@ router.post( route.INDEX, function( req, res ){
 
     res.end();
 });
-
-
-// TODO: mock
-
-function getAgentHardware( req ){
-    console.log( uaParser(req.header( 'User-Agent' )) );
-    return req.header( 'User-Agent' );
-}
-
-
-function isMobile( agentHardware ){
-    return false;
-}
