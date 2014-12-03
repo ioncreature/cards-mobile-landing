@@ -10,7 +10,7 @@ html(lang='en')
         meta(http-equiv='X-UA-Compatible', content='IE=edge')
         meta(name='viewport', content='width=device-width, initial-scale=1')
         link(href='/public/css/all.css', rel='stylesheet')
-        link(href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400&subset=latin,cyrillic', rel='stylesheet', type='text/css')
+        link(href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400,600&subset=latin,cyrillic', rel='stylesheet', type='text/css')
         link(href='/favicon.ico', rel='shortcut icon' type='image/x-icon')
     body(class=pageName)
         .container-fluid
@@ -22,8 +22,31 @@ html(lang='en')
                         br
                         | прикосновением телефона
             if isMobile
-                .row.mobile
-                    h2 Hi, mobile!
+                if isModelOk
+                    .row.mobile
+                        p
+                            | Скачайте приложение
+                            br
+                            | для Вашего смартфона
+                        h2= model
+                        a(href="#") СКАЧАТЬ
+                else
+                    .row.mobile
+                        p
+                            | Ваш смартфон
+                            br
+                            | пока не поддерживается
+
+                        p
+                            | Узнайте о появлении
+                            br
+                            | "Кошелька" для Вашего
+                            br
+                            | телефона первыми
+                        form#mobile(action=route.INDEX, method='POST')
+                            input(type='email', name='email', placeholder='Ваш e-mail')
+                            input(type='submit', value='OK')
+
             else
                 .row.desktop
                     p

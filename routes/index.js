@@ -5,7 +5,6 @@
 
 var router = require( 'express' ).Router(),
     fs = require( 'fs' ),
-    mime = require( 'mime' ),
     registry = require( '../lib/registry' ),
     util = require( '../lib/util' ),
     async = require( 'async' ),
@@ -18,25 +17,45 @@ module.exports = router;
 
 
 router.get( route.INDEX, function( req, res ){
-    var ua = new MobileDetect( req.header('User-Agent') ),
-        isMobile = ua.phone();
+    var ua = req.header( 'User-Agent' ),
+        md = new MobileDetect( ua ),
+        isMobile = md.phone(),
+        model = isMobile && getModel( ua );
 
-    console.log( isMobile );
     console.log( ua );
+    console.log( md );
+    console.log( model );
+
     res.render( 'landing', {
         isMobile: isMobile,
-        isModelOk: isMobile && config.availableModels.indexOf( isMobile ) > -1
+        model: model,
+        isModelOk: true
+        //isModelOk: isMobile && config.availableModels.indexOf( model ) > -1
     });
 });
 
 
 router.post( route.INDEX, function( req, res ){
-    var ua = uaParser( req.header('User-Agent') ),
-        model = ua.device.model || req.body.model,
+    var ua = req.header( 'User-Agent' ),
+        model = getModel( ua ) || req.body.model,
         email = req.body.email;
 
     if ( model && email )
-        fs.appendFileSync( config.subscribers, email + ' ' + model );
+        fs.appendFile( config.subscribers, [new Date, email, model, '\n'].join(';'), util.noop );
 
     res.end();
 });
+
+
+function getModel( userAgent ){
+    try {
+        var device = userAgent
+            .match( /\([^\(]*\)/ )[0]
+            .replace( /[\(\)]/g, '' )
+            .split( ';' )[2];
+        return device && device.trim();
+    } catch ( e ){
+        console.log( 'error', e );
+        return false;
+    }
+}

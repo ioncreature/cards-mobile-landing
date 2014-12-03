@@ -5,10 +5,8 @@
     "dependencies": {
         "express": "4.10.x",
         "body-parser": "1.9.x",
-        "express-session": "1.7.x",
         "serve-favicon": "*",
         "morgan": "1.4.x",
-        "mime": "*",
         "commander": "2.5.x",
         "jade": "1.7.x",
         "less-middleware": "1.0.x",
