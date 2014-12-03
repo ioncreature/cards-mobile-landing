@@ -6,10 +6,13 @@
 $( function(){
     console.log( 'Hi man!' );
 
+    if ( localStorage.sent )
+        showSocial();
+
     $( 'form' ).submit( function(){
         if ( isValid() ){
-            $( '.row.thanks' ).show();
-            $( '.row.desktop, .row.mobile' ).hide();
+            localStorage.sent = 'yo';
+            showSocial();
             $.ajax({
                 url: '/',
                 type: 'POST',
@@ -26,5 +29,10 @@ $( function(){
 
     function isValid(){
         return true;
+    }
+
+    function showSocial(){
+        $( '.row.thanks' ).show();
+        $( '.row.desktop, .row.mobile' ).hide();
     }
 });
