@@ -19,26 +19,8 @@ exports.route = {
     PUBLIC_CSS: '/public/css'
 };
 
-exports.availableModels = [
-    'nexus 5', // На самом деле нет
-    'htc one_m8',
-    'htc_one_m8',
-    'htc_one',
-    'htc one_m7',
-    'htc one max',
-    'htc one_e8',
-    'htc one_e8 dual sim',
-    'htc one s',
-    'htc_onesv',
-    'c6603',
-    'c6833',
-    'philips w336',
-    'philips i908',
-    'philips w5888' // Нигде не нашел юзер агента этого девайса, выдумал сам.
-];
-
 exports.modelAliases = {
-    'nexus 5': 'Nexus 5', // На самом деле нет
+    //'nexus 5': 'Nexus 5', // На самом деле нет
     'c6603': 'Sony Xperia Z',
     'htc one_m7': 'HTC One M7',
     'htc one_m8': 'HTC One M8',
