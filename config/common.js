@@ -30,8 +30,9 @@ exports.availableModels = [
     'htc one_e8',
     'htc one s',
     'htc_onesv',
-    'c6833', // Sony Xperia Z
+    'c6603', // Sony Xperia Z
     'philips w336',
+    'philips i908',
     'philips w5888' // Нигде не нашел юзер агента этого девайса, выдумал сам.
 ];
 
