@@ -53,5 +53,5 @@ exports.appUrls = {
     'Philips W336': 'http://apk-updater.cardsmobile.ru/resource-updater/loader/wallet/getAPK?package=com.beskontakt.mobilewallet&device=Philips%20W336&version=25024040'
 };
 
-exports.subscribers = join(__dirname, '..', 'subscribers' );
-exports.userAgents = join(__dirname, '..', 'user-agents' );
+exports.subscribers = join(__dirname, '..', 'subscribers.log' );
+exports.userAgents = join(__dirname, '..', 'user-agents.log' );
