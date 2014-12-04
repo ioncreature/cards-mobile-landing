@@ -13,10 +13,11 @@
         "async": "0.9.x",
         "yahel": "*",
         "mobile-detect": "0.4.x",
-        "user-agent-parser": "0.6.x",
         "request": "*",
         "async": "*",
-        "jsdom": "*"
+        "jsdom": "*",
+        "nodemailer": "1.3.x",
+        "nodemailer-direct-transport": "*"
     },
     "engines": {
         "node": "0.10.x"

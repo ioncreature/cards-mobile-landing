@@ -20,7 +20,7 @@ exports.route = {
 };
 
 exports.modelAliases = {
-    //'nexus 5': 'Nexus 5', // На самом деле нет
+    'nexus 5': 'Nexus 5', // На самом деле нет
     'c6603': 'Sony Xperia Z',
     'htc one_m7': 'HTC One M7',
     'htc one_m8': 'HTC One M8',
@@ -40,6 +40,7 @@ exports.modelAliases = {
 };
 
 exports.appUrls = {
+    'Nexus 5': 'http://google.com/nexus/5', // На самом деле нет
     'Sony Xperia Z': 'http://apk-updater.cardsmobile.ru/resource-updater/loader/wallet/getAPK?package=com.beskontakt.mobilewallet.sony&device=C6603&version=25024040',
     'HTC One M8': 'http://apk-updater.cardsmobile.ru/resource-updater/loader/wallet/getAPK?package=com.beskontakt.mobilewallet&device=HTC%20One_M8&version=25024040',
     'HTC One E8': 'http://apk-updater.cardsmobile.ru/resource-updater/loader/wallet/getAPK?package=com.beskontakt.mobilewallet&device=HTC%20One_M8&version=25024040',

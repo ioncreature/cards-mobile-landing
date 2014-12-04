@@ -11,6 +11,8 @@ var router = require( 'express' ).Router(),
     join = require( 'path' ).join,
     config = registry.get( 'config' ),
     MobileDetect = require( 'mobile-detect' ),
+    mailer = require( 'nodemailer' ),
+    directTransport = require( 'nodemailer-direct-transport' ),
     route = config.route;
 
 module.exports = router;
