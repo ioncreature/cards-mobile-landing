@@ -27,7 +27,7 @@ body {
     font-size: 16px;
     line-height: 1.42;
     color: #333;
-    margin-bottom: 60px;
+    margin-bottom: 50px;
 }
 
 table {
@@ -95,7 +95,7 @@ input, button, select, textarea {
 }
 
 @media (max-width:768px) {
-    .container-fluid > .row.logo {
+    .row.logo {
         height: 65px;
     }
     .row.banner {
@@ -108,10 +108,13 @@ input, button, select, textarea {
 }
 
 @media (max-width:400px){
+    .row.logo {
+        height: 60px;
+    }
     .row.banner {
         .col-sm-12 {
-            height: 215px;
-            background-size: 265px;
+            height: 205px;
+            background-size: 255px;
             h2 {
                 font-size: 17px;
             }
@@ -149,13 +152,26 @@ input, button, select, textarea {
         font-weight: 600;
         margin-bottom: 35px;
     }
-    a {
+    a.button {
+        display: inline-block;
         padding: 12px 60px;
         border-radius: 4px;
         border: 1px solid #F15A29;
         background-color: #F15A29;
         color: white;
         text-decoration: none;
+        margin-bottom: 10px;
+    }
+    a.instructions {
+        color: #00b3ee;
+        text-decoration: underline;
+    }
+
+    #instructions {
+        display: none;
+        text-align: left;
+        margin: 10px 0;
+        padding: 10px;
     }
 }
 

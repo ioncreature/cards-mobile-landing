@@ -27,6 +27,14 @@ $( function(){
         return false;
     });
 
+    $( 'a.instructions' ).click( function(){
+        var instr = $( '#instructions' );
+        if ( instr.is(':visible') )
+            instr.hide();
+        else
+            instr.show();
+    });
+
     function isValid(){
         return true;
     }

@@ -40,8 +40,15 @@ router.post( route.INDEX, function( req, res ){
         model = getModel( ua ) || req.body.model,
         email = req.body.email;
 
-    if ( model && email )
+    if ( model && email ){
         fs.appendFile( config.subscribers, JSON.stringify([(new Date).toISOString(), email, model, ua]) + '\n', util.noop );
+        sendMail( email, function( error ){
+            if ( error )
+                console.log( 'Error sending mail to %s \n%s', email, error );
+            else
+                console.log( 'Mail to %s successfully sent', email );
+        });
+    }
 
     res.end();
 });
@@ -65,4 +72,9 @@ function getModel( userAgent ){
 function getModelName( model ){
     var m = model && model.toLowerCase();
     return m && config.modelAliases[m];
+}
+
+
+function sendMail( email, callback ){
+    callback();
 }
