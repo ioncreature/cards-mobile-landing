@@ -27,6 +27,7 @@ exports.modelAliases = {
     'htc_one_m8': 'HTC One M8',
     'htc_one_m8 dual sim': 'HTC One M8',
     'htc_one': 'HTC One',
+    'htc one': 'HTC One',
     'htc one_e8': 'HTC One E8',
     'htc one_e8 dual sim': 'HTC One E8',
     'htc one max': 'HTC One Max',

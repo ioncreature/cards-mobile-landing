@@ -3,5 +3,5 @@ node_modules
 public/bower
 ScreenShots
 public/css
-subscribers.log
-user-agents.log
+./subscribers.log
+./user-agents.log
