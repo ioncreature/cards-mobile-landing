@@ -64,7 +64,7 @@ html(lang='en')
                             br
                             | для вашего телефона первыми
                         form#mobile(action=route.PREFIX + route.INDEX, method='POST')
-                            input(type='email', name='email', placeholder='Ваш e-mail')
+                            input(type='email', name='email', placeholder='Ваш e-mail', required)
                             input(type='submit', value='OK')
 
             else
@@ -91,7 +91,7 @@ html(lang='en')
                             td
                     p Мы сообщим вам о появлении «Кошелька» для вашей модели телефона
                     form#desktop(action=route.PREFIX + route.INDEX, method='POST')
-                        input(type='text', name='model', placeholder='Укажите Вашу модель телефона')
+                        input(type='text', name='model', placeholder='Укажите Вашу модель телефона', required)
                         br
                         input(type='email', name='email', placeholder='Ваш e-mail')
                         input(type='submit', value='OK')
