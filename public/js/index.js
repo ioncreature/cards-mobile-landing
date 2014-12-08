@@ -14,7 +14,7 @@ $( function(){
             localStorage.sent = 'yo';
             showSocial();
             $.ajax({
-                url: '/',
+                url: '/download/',
                 type: 'POST',
                 data: {
                     model: $( 'input[name="model"]' ).val(),
