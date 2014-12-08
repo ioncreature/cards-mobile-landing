@@ -19,6 +19,8 @@ exports.route = {
     PUBLIC_CSS: '/public/css'
 };
 
+exports.urlPrefix = '';
+
 exports.modelAliases = {
     'nexus 5': 'Nexus 5', // На самом деле нет
     'sonyc6603': 'Sony Xperia Z',

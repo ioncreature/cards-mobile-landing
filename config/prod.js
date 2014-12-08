@@ -9,4 +9,6 @@ exports.debug = false;
 
 exports.proxyUsed = true;
 
+exports.urlPrefix = '/download',
+
 exports.port = 80;
