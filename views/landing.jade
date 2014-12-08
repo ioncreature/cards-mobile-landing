@@ -9,9 +9,9 @@ html(lang='en')
         meta(charset='utf-8')
         meta(http-equiv='X-UA-Compatible', content='IE=edge')
         meta(name='viewport', content='width=device-width, initial-scale=1')
-        link(href='/public/css/all.css', rel='stylesheet')
+        link(href=route.PREFIX + '/public/css/all.css', rel='stylesheet')
         link(href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,300,600&subset=latin,cyrillic', rel='stylesheet', type='text/css')
-        link(href='/favicon.ico', rel='shortcut icon' type='image/x-icon')
+        link(href=route.PREFIX + '/favicon.ico', rel='shortcut icon' type='image/x-icon')
     body(class=pageName)
         .container-fluid
             .row.logo
@@ -33,7 +33,7 @@ html(lang='en')
                             a.button(href=url) СКАЧАТЬ
                             br
                             a.instructions(href="#") Инструкция по установке
-                                img(width="16px", height="16px", src="/public/img/expanded.png")
+                                img(width="16px", height="16px", src=route.PREFIX + "/public/img/expanded.png")
                             #instructions
                                 | Проверьте, разрешена ли установка приложений из сторонних источников:
                                 ol
@@ -63,7 +63,7 @@ html(lang='en')
                             | Узнайте о появлении «Кошелька»
                             br
                             | для вашего телефона первыми
-                        form#mobile(action=route.INDEX, method='POST')
+                        form#mobile(action=route.PREFIX + route.INDEX, method='POST')
                             input(type='email', name='email', placeholder='Ваш e-mail')
                             input(type='submit', value='OK')
 
@@ -90,7 +90,7 @@ html(lang='en')
                             td HTC One SV
                             td
                     p Мы сообщим вам о появлении «Кошелька» для вашей модели телефона
-                    form#desktop(action=route.INDEX, method='POST')
+                    form#desktop(action=route.PREFIX + route.INDEX, method='POST')
                         input(type='text', name='model', placeholder='Укажите Вашу модель телефона')
                         br
                         input(type='email', name='email', placeholder='Ваш e-mail')
@@ -119,8 +119,8 @@ html(lang='en')
                     a(href='http://cardsmobile.ru')  Приложение «Кошелёк»
                     |  2014
 
-        script(src='/public/bower/jquery/dist/jquery.min.js')
-        script(src='/public/js/index.js')
+        script(src=route.PREFIX + '/public/bower/jquery/dist/jquery.min.js')
+        script(src=route.PREFIX + '/public/js/index.js')
         script.
             (function( i, s, o, g, r, a, m ){
                 i['GoogleAnalyticsObject'] = r;

@@ -13,13 +13,14 @@ exports.cookieTtl = 6 * 3600 * 1000;
 
 exports.proxyUsed = false;
 
+exports.routePrefix = '';
+
 exports.route = {
+    PREFIX: '',
     INDEX: '/',
     PUBLIC: '/public',
     PUBLIC_CSS: '/public/css'
 };
-
-exports.urlPrefix = '';
 
 exports.modelAliases = {
     'nexus 5': 'Nexus 5', // На самом деле нет

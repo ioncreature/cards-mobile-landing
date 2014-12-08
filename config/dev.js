@@ -9,4 +9,4 @@ exports.proxyUsed = true;
 
 exports.port = 8081;
 
-exports.urlPrefix = '';
+exports.routePrefix = '';
