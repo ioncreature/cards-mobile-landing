@@ -6,8 +6,8 @@
 $( function(){
     console.log( 'Hi man!' );
 
-    if ( localStorage.sent )
-        showSocial();
+    //if ( localStorage.sent )
+    //    showSocial();
 
     $( 'form' ).submit( function(){
         if ( isValid() ){
@@ -28,11 +28,14 @@ $( function(){
     });
 
     $( 'a.instructions' ).click( function(){
-        var instr = $( '#instructions' );
-        if ( instr.is(':visible') )
+        var instr = $( '#instructions' ),
+            icon = $( 'img#collapser' );
+        if ( instr.is(':visible') ){
             instr.hide();
-        else
+        }
+        else {
             instr.show();
+        }
     });
 
     function isValid(){

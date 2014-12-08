@@ -21,6 +21,7 @@ exports.route = {
 
 exports.modelAliases = {
     'nexus 5': 'Nexus 5', // На самом деле нет
+    'sonyc6603': 'Sony Xperia Z',
     'c6603': 'Sony Xperia Z',
     'htc one_m7': 'HTC One M7',
     'htc one_m8': 'HTC One M8',

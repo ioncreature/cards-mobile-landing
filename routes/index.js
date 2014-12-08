@@ -42,11 +42,12 @@ router.post( route.INDEX, function( req, res ){
 
     if ( model && email ){
         fs.appendFile( config.subscribers, JSON.stringify([(new Date).toISOString(), email, model, ua]) + '\n', util.noop );
-        sendMail( email, function( error ){
+        sendMail( email, function( error, status ){
             if ( error )
                 console.log( 'Error sending mail to %s \n%s', email, error );
             else
                 console.log( 'Mail to %s successfully sent', email );
+            console.log( 'status', status );
         });
     }
 
@@ -76,5 +77,15 @@ function getModelName( model ){
 
 
 function sendMail( email, callback ){
-    callback();
+    var transport = mailer.createTransport( directTransport({retryDelay: 1000, name: this.hostname}) );
+
+    if ( !sendMail.html )
+        sendMail.html = fs.readFileSync( join(__dirname, '../views/mail.html'), {encoding: 'utf8'} );
+
+    transport.sendMail({
+        from: 'Приложение «Кошелёк» <support@cardsmobile.ru>',
+        to: email,
+        subject: ' Благодарим за вашу заявку',
+        html: sendMail.html
+    }, callback );
 }

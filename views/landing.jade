@@ -10,7 +10,7 @@ html(lang='en')
         meta(http-equiv='X-UA-Compatible', content='IE=edge')
         meta(name='viewport', content='width=device-width, initial-scale=1')
         link(href='/public/css/all.css', rel='stylesheet')
-        link(href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400,600&subset=latin,cyrillic', rel='stylesheet', type='text/css')
+        link(href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,300,600&subset=latin,cyrillic', rel='stylesheet', type='text/css')
         link(href='/favicon.ico', rel='shortcut icon' type='image/x-icon')
     body(class=pageName)
         .container-fluid
@@ -33,15 +33,24 @@ html(lang='en')
                             a.button(href=url) СКАЧАТЬ
                             br
                             a.instructions(href="#") Инструкция по установке
+                                img(width="16px", height="16px", src="/public/img/expanded.png")
                             #instructions
                                 | Проверьте, разрешена ли установка приложений из сторонних источников:
                                 ol
-                                    li Зайдите в меню «Настройки».
-                                    li Выберите «Безопасность»
-                                    li Установите галочку в пункте «Неизвестные источники»
-                                    li В открытом окне нажмите «Ок».
-                                | Теперь вы можете загрузить и установить «Кошелек» на ваше устройство. После загрузки приложения откроется окно установки.
-
+                                    li Зайдите в меню
+                                        b  «Настройки»
+                                    li Выберите
+                                        b  «Безопасность»
+                                    li Установите галочку в пункте
+                                        b  «Неизвестные источники»
+                                    li В открытом окне нажмите
+                                        b  «Ок»
+                                | Теперь вы можете загрузить и установить «Кошелек» на ваше устройство.
+                                ol(start="5")
+                                    li Нажмите
+                                        b  «Скачать»
+                                    li Дождитесь загрузки файла для установки приложения
+                                    li Послу загрузки файла запустите его и следуйте инструкциям
                         else
                             p Нет ссылки для скачивания
                 else
@@ -112,3 +121,50 @@ html(lang='en')
 
         script(src='/public/bower/jquery/dist/jquery.min.js')
         script(src='/public/js/index.js')
+        script.
+            (function( i, s, o, g, r, a, m ){
+                i['GoogleAnalyticsObject'] = r;
+                i[r] = i[r] || function(){
+                    (i[r].q = i[r].q || []).push( arguments )
+                }, i[r].l = 1 * new Date();
+                a = s.createElement( o ),
+                        m = s.getElementsByTagName( o )[0];
+                a.async = 1;
+                a.src = g;
+                m.parentNode.insertBefore( a, m )
+            })( window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga' );
+            ga( 'create', 'UA-51462736-1', 'cardsmobile.ru' );
+            ga( 'send', 'pageview' );
+        script.
+            (function( d, w, c ){
+                (w[c] = w[c] || []).push( function(){
+                    try {
+                        w.yaCounter25119920 = new Ya.Metrika( {
+                            id: 25119920,
+                            webvisor: true,
+                            clickmap: true,
+                            trackLinks: true,
+                            accurateTrackBounce: true,
+                            ut: "noindex"
+                        } );
+                    } catch ( e ){
+                    }
+                } );
+                var n = d.getElementsByTagName( "script" )[0],
+                        s = d.createElement( "script" ),
+                        f = function(){
+                            n.parentNode.insertBefore( s, n );
+                        };
+                s.type = "text/javascript";
+                s.async = true;
+                s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js";
+                if ( w.opera == "[object Opera]" ){
+                    d.addEventListener( "DOMContentLoaded", f, false );
+                }
+                else {
+                    f();
+                }
+            })( document, window, "yandex_metrika_callbacks" );
+        noscript
+            div
+                img(src="http://mc.yandex.ru/watch/25119920?ut=noindex", style="position:absolute; left:-9999px;" alt="")
