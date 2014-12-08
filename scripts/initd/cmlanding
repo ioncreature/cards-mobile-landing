@@ -1,0 +1,35 @@
+#!/bin/bash
+# @author Alexander Marenin
+# @date December 2014
+
+export PATH=$PATH:/usr/local/bin
+export SERVICE_HOME="/var/repo/cards-mobile-landing"
+export SERVICE_NAME="cmlanding"
+export APP="app.js"
+export PARAMS="-c prod"
+export LOG="/var/log/cmlanding.log"
+
+case "$1" in
+start)
+    echo "Starting $SERVICE_NAME"
+    forever stop $SERVICE_HOME/$APP $PARAMS
+    forever start -a -l $LOG $SERVICE_HOME/$APP $PARAMS
+    ;;
+stop)
+    echo "Stopping Service"
+    forever stop $SERVICE_HOME/$APP $PARAMS
+    ;;
+restart)
+    echo "Restarting Service"
+    forever restart $SERVICE_HOME/$APP $PARAMS
+    ;;
+status)
+    forever list
+    ;;
+*)
+    echo $SERVICE_NAME
+    echo "Usage: service $SERVICE_NAME {start|stop|restart|status}"
+    exit 1
+esac
+
+exit 0
