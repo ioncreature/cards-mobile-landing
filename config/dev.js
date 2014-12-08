@@ -3,8 +3,6 @@
  * @date November 2014
  */
 
-var join = require( 'path' ).join;
-
 exports.debug = true;
 
 exports.proxyUsed = true;
