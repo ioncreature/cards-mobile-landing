@@ -46,16 +46,16 @@ exports.modelAliases = {
 
 exports.appUrls = {
     //'Nexus 5': 'http://google.com/nexus/5', // На самом деле нет
-    'Sony Xperia Z': 'http://apk-updater.cardsmobile.ru/resource-updater/loader/wallet/getAPK?package=com.beskontakt.mobilewallet.sony&device=C6603&version=25112040',
-    'HTC One M8': 'http://apk-updater.cardsmobile.ru/resource-updater/loader/wallet/getAPK?package=com.beskontakt.mobilewallet&device=HTC%20One_M8&version=25024040',
-    'HTC One E8': 'http://apk-updater.cardsmobile.ru/resource-updater/loader/wallet/getAPK?package=com.beskontakt.mobilewallet&device=HTC%20One_M8&version=25024040',
-    'HTC One SV': 'http://apk-updater.cardsmobile.ru/resource-updater/loader/wallet/getAPK?package=com.beskontakt.mobilewallet&device=HTC%20One%20SV&version=25024040',
-    'HTC One Max': 'http://apk-updater.cardsmobile.ru/resource-updater/loader/wallet/getAPK?package=com.beskontakt.mobilewallet&device=HTC%20One&version=25024040',
-    'HTC One': 'http://apk-updater.cardsmobile.ru/resource-updater/loader/wallet/getAPK?package=com.beskontakt.mobilewallet&device=HTC%20One&version=25024040',
-    'HTC One M7': 'http://apk-updater.cardsmobile.ru/resource-updater/loader/wallet/getAPK?package=com.beskontakt.mobilewallet&device=HTC%20One&version=25024040',
-    'Philips i908': 'http://apk-updater.cardsmobile.ru/resource-updater/loader/wallet/getAPK?package=com.beskontakt.mobilewallet&device=Philips%20I908&version=25102040',
-    'Philips W8555': 'http://apk-updater.cardsmobile.ru/resource-updater/loader/wallet/getAPK?package=com.beskontakt.mobilewallet&device=Philips%20W8555&version=25102040',
-    'Philips W336': 'http://apk-updater.cardsmobile.ru/resource-updater/loader/wallet/getAPK?package=com.beskontakt.mobilewallet&device=Philips%20W336&version=25102040'
+    'Sony Xperia Z': 'http://apk-updater.cardsmobile.ru/resource-updater/loader/wallet/getAPK.apk?package=com.beskontakt.mobilewallet.sony&device=C6603&version=25112040',
+    'HTC One M8': 'http://apk-updater.cardsmobile.ru/resource-updater/loader/wallet/getAPK.apk?package=com.beskontakt.mobilewallet&device=HTC%20One_M8&version=25024040',
+    'HTC One E8': 'http://apk-updater.cardsmobile.ru/resource-updater/loader/wallet/getAPK.apk?package=com.beskontakt.mobilewallet&device=HTC%20One_M8&version=25024040',
+    'HTC One SV': 'http://apk-updater.cardsmobile.ru/resource-updater/loader/wallet/getAPK.apk?package=com.beskontakt.mobilewallet&device=HTC%20One%20SV&version=25024040',
+    'HTC One Max': 'http://apk-updater.cardsmobile.ru/resource-updater/loader/wallet/getAPK.apk?package=com.beskontakt.mobilewallet&device=HTC%20One&version=25024040',
+    'HTC One': 'http://apk-updater.cardsmobile.ru/resource-updater/loader/wallet/getAPK.apk?package=com.beskontakt.mobilewallet&device=HTC%20One&version=25024040',
+    'HTC One M7': 'http://apk-updater.cardsmobile.ru/resource-updater/loader/wallet/getAPK.apk?package=com.beskontakt.mobilewallet&device=HTC%20One&version=25024040',
+    'Philips i908': 'http://apk-updater.cardsmobile.ru/resource-updater/loader/wallet/getAPK.apk?package=com.beskontakt.mobilewallet&device=Philips%20I908&version=25102040',
+    'Philips W8555': 'http://apk-updater.cardsmobile.ru/resource-updater/loader/wallet/getAPK.apk?package=com.beskontakt.mobilewallet&device=Philips%20W8555&version=25102040',
+    'Philips W336': 'http://apk-updater.cardsmobile.ru/resource-updater/loader/wallet/getAPK.apk?package=com.beskontakt.mobilewallet&device=Philips%20W336&version=25102040'
 };
 
 exports.subscribers = join(__dirname, '..', 'subscribers.log' );
