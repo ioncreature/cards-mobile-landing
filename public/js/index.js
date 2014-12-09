@@ -45,6 +45,9 @@ $( function(){
             email = emailElem.val(),
             modelElem = form.find( 'input[name="model"]' );
 
+        modelElem.removeClass( 'error' );
+        emailElem.removeClass( 'error' );
+
         if ( modelElem.length )
             if ( !modelElem.val() ){
                 modelElem.focus();
