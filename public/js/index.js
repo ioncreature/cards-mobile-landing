@@ -4,8 +4,6 @@
  */
 
 $( function(){
-    console.log( 'Hi man!' );
-
     //if ( localStorage.sent )
     //    showSocial();
 
