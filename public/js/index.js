@@ -7,8 +7,8 @@ $( function(){
     //if ( localStorage.sent )
     //    showSocial();
 
-    $( 'form' ).submit( function(){
-        if ( isValid() ){
+    $( 'form' ).submit( function( event ){
+        if ( isValid(this) ){
             localStorage.sent = 'yo';
             showSocial();
             $.ajax({
@@ -22,6 +22,7 @@ $( function(){
                 console.log( 'its done!', arguments );
             });
         }
+        event.preventDefault();
         return false;
     });
 
@@ -38,8 +39,34 @@ $( function(){
         }
     });
 
-    function isValid(){
+    function isValid( elem ){
+        var form = $( elem ),
+            emailElem = form.find( 'input[type="email"]' ),
+            email = emailElem.val(),
+            modelElem = form.find( 'input[name="model"]' );
+
+        if ( modelElem.length )
+            if ( !modelElem.val() ){
+                modelElem.focus();
+                modelElem.addClass( 'error' );
+                return false;
+            }
+
+        if ( !email || !isEmail(email) ){
+            emailElem.focus();
+            emailElem.addClass( 'error' );
+            return false;
+        }
+
         return true;
+    }
+
+    function isEmail( str ){
+        var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        if ( typeof str !== 'string' )
+            return false;
+        else
+            return re.test( str );
     }
 
     function showSocial(){
