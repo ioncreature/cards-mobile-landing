@@ -27,14 +27,16 @@ $( function(){
         return false;
     });
 
-    $( 'a.instructions' ).click( function(){
-        var instr = $( '#instructions' ),
-            icon = $( 'img#collapser' );
+    var instructions = $( 'a.instructions' );
+    instructions.click( function(){
+        var instr = $( '#instructions' );
         if ( instr.is(':visible') ){
             instr.hide();
+            instructions.removeClass( 'expanded' );
         }
         else {
             instr.show();
+            instructions.addClass( 'expanded' );
         }
     });
 
