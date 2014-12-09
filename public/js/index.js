@@ -44,6 +44,6 @@ $( function(){
 
     function showSocial(){
         $( '.row.thanks' ).show();
-        $( '.row.desktop, .row.mobile' ).hide();
+        $( '.row.desktop, .row.mobile, form#desktop' ).hide();
     }
 });
