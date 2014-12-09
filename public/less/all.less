@@ -168,8 +168,6 @@ input, button, select, textarea {
         line-height: 20px;
         text-decoration: underline;
         vertical-align: top;
-        transition: all 0.8s cubic-bezier(0.645, 0.045, 0.355, 1);
-        -webkit-transition: all 0.8s cubic-bezier(0.645, 0.045, 0.355, 1);
         &.expanded {
             text-decoration: none;
             img {
@@ -180,6 +178,8 @@ input, button, select, textarea {
         img {
             margin-left: 4px;
             margin-bottom: -3px;
+            transition: all 0.5s cubic-bezier(0.645, 0.045, 0.355, 1);
+            -webkit-transition: all 0.5s cubic-bezier(0.645, 0.045, 0.355, 1);
         }
     }
     #instructions {
