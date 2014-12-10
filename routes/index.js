@@ -26,7 +26,7 @@ router.get( route.INDEX, function( req, res ){
         model = isMobile && getModel( ua ),
         modelName = model && getModelName( model );
 
-    if ( !modelName )
+    if ( isMobile && !modelName )
         fs.appendFile( config.userAgents, (new Date).toISOString() + ': ' + ua + '\n' );
 
     if ( isMobile )
