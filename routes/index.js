@@ -59,7 +59,7 @@ router.post( route.INDEX, function( req, res ){
 });
 
 
-router.get( route.AGENTS, function( req, res, next ){
+router.get( route.AGENTS, function( req, res ){
     res.type = 'text/plain';
     res.sendFile( config.userAgents );
 });
