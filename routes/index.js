@@ -14,7 +14,7 @@ var router = require( 'express' ).Router(),
     mailer = require( 'nodemailer' ),
     directTransport = require( 'nodemailer-direct-transport' ),
     route = config.route,
-    phones = loadPhones();
+    phonesString = loadPhonesString();
 
 module.exports = router;
 
@@ -36,7 +36,7 @@ router.get( route.INDEX, function( req, res ){
             url: modelName ? config.appUrls[modelName] : ''
         });
     else
-        res.render( 'desktop', {phones: phones} );
+        res.render( 'desktop', {phones: phonesString} );
 });
 
 
@@ -102,12 +102,12 @@ function sendMail( email, callback ){
 }
 
 
-function loadPhones(){
+function loadPhonesString(){
     try {
-        return JSON.parse( fs.readFileSync(config.phoneList, {encoding: 'utf8'}) );
+        return fs.readFileSync(config.phoneList, {encoding: 'utf8'});
     }
     catch ( error ){
         console.log( error );
-        return [];
+        return '[]';
     }
 }
