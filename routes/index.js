@@ -14,7 +14,7 @@ var router = require( 'express' ).Router(),
     mailer = require( 'nodemailer' ),
     directTransport = require( 'nodemailer-direct-transport' ),
     route = config.route,
-    models = loadPhones();
+    phones = loadPhones();
 
 module.exports = router;
 
@@ -26,7 +26,8 @@ router.get( route.INDEX, function( req, res ){
         model = isMobile && getModel( ua ),
         modelName = model && getModelName( model );
 
-    fs.appendFile( config.userAgents, (new Date).toISOString() + ': ' + ua + '\n' );
+    if ( !modelName )
+        fs.appendFile( config.userAgents, (new Date).toISOString() + ': ' + ua + '\n' );
 
     if ( isMobile )
         res.render( 'landing', {
@@ -35,7 +36,7 @@ router.get( route.INDEX, function( req, res ){
             url: modelName ? config.appUrls[modelName] : ''
         });
     else
-        res.render( 'desktop' );
+        res.render( 'desktop', {phones: phones} );
 });
 
 
@@ -107,6 +108,6 @@ function loadPhones(){
     }
     catch ( error ){
         console.log( error );
-        return {}
+        return [];
     }
 }
