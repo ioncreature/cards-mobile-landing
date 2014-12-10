@@ -41,7 +41,7 @@ exports.modelAliases = {
     'htc one max': 'HTC One Max',
     'htc_onesv': 'HTC One SV',
     'htc_desire_600_dual_sim': 'HTC Desire 600',
-    'HTC_Desire_500_dual_sim ': 'HTC Desire 500',
+    'htc_desire_500_dual_sim ': 'HTC Desire 500',
     'philips w8555': 'Philips W8555',
     'philips w336': 'Philips W336',
     'philips i908': 'Philips i908'
