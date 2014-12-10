@@ -60,14 +60,8 @@ router.post( route.INDEX, function( req, res ){
 
 
 router.get( route.AGENTS, function( req, res, next ){
-    fs.readFile( config.userAgents, {encoding: 'utf8'}, function( error, data ){
-        if ( error )
-            next( error );
-        else {
-            res.type = 'text/plain';
-            res.end( data );
-        }
-    });
+    res.type = 'text/plain';
+    res.sendFile( config.userAgents );
 });
 
 
