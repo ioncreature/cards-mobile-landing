@@ -82,7 +82,8 @@ function getModel( userAgent ){
 
 
 function getModelName( model ){
-    var m = model && model.toLowerCase();
+    var m = model && model.toLowerCase().replace( /_/g, ' ' );
+
     return m && config.modelAliases[m];
 }
 
@@ -104,7 +105,7 @@ function sendMail( email, callback ){
 
 function loadPhonesString(){
     try {
-        return fs.readFileSync(config.phoneList, {encoding: 'utf8'});
+        return fs.readFileSync(config.phoneList, {encoding: 'utf8'} ).replace( /'/g, "\\'" );
     }
     catch ( error ){
         console.log( error );
