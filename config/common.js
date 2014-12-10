@@ -41,6 +41,7 @@ exports.modelAliases = {
     'htc one max': 'HTC One Max',
     'htc_onesv': 'HTC One SV',
     'htc_desire_600_dual_sim': 'HTC Desire 600',
+    'HTC_Desire_500_dual_sim ': 'HTC Desire 500',
     'philips w8555': 'Philips W8555',
     'philips w336': 'Philips W336',
     'philips i908': 'Philips i908'
@@ -53,6 +54,7 @@ exports.appUrls = {
     'HTC One E8': 'http://apk-updater.cardsmobile.ru/resource-updater/loader/wallet/getAPK.apk?package=com.beskontakt.mobilewallet&device=HTC%20One&version=25102040',
     'HTC One SV': 'http://apk-updater.cardsmobile.ru/resource-updater/loader/wallet/getAPK.apk?package=com.beskontakt.mobilewallet&device=HTC%20One%20SV&version=25102040',
     'HTC Desire 600': 'http://apk-updater.cardsmobile.ru/resource-updater/loader/wallet/getAPK.apk?package=com.beskontakt.mobilewallet&device=HTC%20One%20SV&version=25102040',
+    'HTC Desire 500': 'http://apk-updater.cardsmobile.ru/resource-updater/loader/wallet/getAPK.apk?package=com.beskontakt.mobilewallet&device=HTC%20One%20SV&version=25102040',
     'HTC One Max': 'http://apk-updater.cardsmobile.ru/resource-updater/loader/wallet/getAPK.apk?package=com.beskontakt.mobilewallet&device=HTC%20One&version=25102040',
     'HTC One': 'http://apk-updater.cardsmobile.ru/resource-updater/loader/wallet/getAPK.apk?package=com.beskontakt.mobilewallet&device=HTC%20One&version=25102040',
     'HTC One M7': 'http://apk-updater.cardsmobile.ru/resource-updater/loader/wallet/getAPK.apk?package=com.beskontakt.mobilewallet&device=HTC%20One&version=25102040',
