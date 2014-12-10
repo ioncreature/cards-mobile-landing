@@ -76,4 +76,29 @@ $( function(){
         $( '.row.thanks' ).show();
         $( '.row.desktop, .row.mobile, form#desktop' ).hide();
     }
+
+
+    if ( typeof phones === 'object' ){
+        var data = window.phones,
+            vendorSelect = $( 'select[name="vendor"]' ),
+            modelSelect = $( 'select[name="model"]' );
+
+        vendorSelect.change( function(){
+            var vendor = vendorSelect.val();
+            if ( vendor )
+                fillSelect( modelSelect, data[vendor] );
+        });
+
+        fillSelect( vendorSelect, Object.keys(data) );
+        vendorSelect.change();
+    }
+
+
+    function fillSelect( select, list ){
+        var html = list.map( function( str ){
+            return '<option value="' + str + '">' + str + '</option>';
+        }).join( '' );
+
+        select.html( html );
+    }
 });

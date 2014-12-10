@@ -105,7 +105,7 @@ function sendMail( email, callback ){
 
 function loadPhonesString(){
     try {
-        return fs.readFileSync(config.phoneList, {encoding: 'utf8'} ).replace( /'/g, "\\'" );
+        return fs.readFileSync(config.phoneList, {encoding: 'utf8'} );
     }
     catch ( error ){
         console.log( error );

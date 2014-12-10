@@ -24,7 +24,6 @@ exports.route = {
 };
 
 exports.modelAliases = {
-    //'nexus 5': 'Nexus 5', // На самом деле нет
     'sonyc6603': 'Sony Xperia Z',
     'sony c6603': 'Sony Xperia Z',
     'c6603': 'Sony Xperia Z',
@@ -47,7 +46,6 @@ exports.modelAliases = {
 };
 
 exports.appUrls = {
-    //'Nexus 5': 'http://google.com/nexus/5', // На самом деле нет
     'Sony Xperia Z': 'http://apk-updater.cardsmobile.ru/resource-updater/loader/wallet/getAPK.apk?package=com.beskontakt.mobilewallet.sony&device=C6603&version=25112040',
     'HTC One M8': 'http://apk-updater.cardsmobile.ru/resource-updater/loader/wallet/getAPK.apk?package=com.beskontakt.mobilewallet&device=HTC%20One&version=25102040',
     'HTC One E8': 'http://apk-updater.cardsmobile.ru/resource-updater/loader/wallet/getAPK.apk?package=com.beskontakt.mobilewallet&device=HTC%20One&version=25102040',

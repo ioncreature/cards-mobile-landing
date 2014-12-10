@@ -28,7 +28,7 @@ html
             } ] }
     body
         script.
-            var phones = #{phones};
+            var phones = !{phones};
         // HEADER
         #header.slide
             .wrapper
@@ -141,6 +141,8 @@ html
                             br
                             | для вашей модели телефона
                         form#desktop(action=route.PREFIX + route.INDEX, method='POST')
+                            select(name='vendor')
+                            select(name='model')
                             input(type='text', name='model', placeholder='Укажите вашу модель телефона', required)
                             br
                             input(type='email', name='email', placeholder='Ваш e-mail')
