@@ -13,7 +13,8 @@ var router = require( 'express' ).Router(),
     MobileDetect = require( 'mobile-detect' ),
     mailer = require( 'nodemailer' ),
     directTransport = require( 'nodemailer-direct-transport' ),
-    route = config.route;
+    route = config.route,
+    models = loadPhones();
 
 module.exports = router;
 
@@ -24,7 +25,6 @@ router.get( route.INDEX, function( req, res ){
         isMobile = md.phone(),
         model = isMobile && getModel( ua ),
         modelName = model && getModelName( model );
-
 
     fs.appendFile( config.userAgents, (new Date).toISOString() + ': ' + ua + '\n' );
 
@@ -56,6 +56,18 @@ router.post( route.INDEX, function( req, res ){
     }
 
     res.end();
+});
+
+
+router.get( route.AGENTS, function( req, res, next ){
+    fs.readFile( config.userAgents, {encoding: 'utf8'}, function( error, data ){
+        if ( error )
+            next( error );
+        else {
+            res.type = 'text/plain';
+            res.end( data );
+        }
+    });
 });
 
 
@@ -92,4 +104,15 @@ function sendMail( email, callback ){
         subject: ' Благодарим за вашу заявку',
         html: sendMail.html
     }, callback );
+}
+
+
+function loadPhones(){
+    try {
+        return JSON.parse( fs.readFileSync(config.phoneList, {encoding: 'utf8'}) );
+    }
+    catch ( error ){
+        console.log( error );
+        return {}
+    }
 }
