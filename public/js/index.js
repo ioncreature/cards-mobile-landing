@@ -15,7 +15,8 @@ $( function(){
                 url: '/download/',
                 type: 'POST',
                 data: {
-                    model: $( 'input[name="model"]' ).val(),
+                    vendor: $( 'select[name="vendor"]' ).val(),
+                    model: $( 'select[name="model"]' ).val(),
                     email: $( 'input[name="email"]' ).val()
                 }
             }).done( function(){
@@ -90,7 +91,9 @@ $( function(){
         });
 
         fillSelect( vendorSelect, Object.keys(data) );
+        vendorSelect.val( 'Apple' );
         vendorSelect.change();
+        modelSelect.val( 'iPhone 6' );
     }
 
 
