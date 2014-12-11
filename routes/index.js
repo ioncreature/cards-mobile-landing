@@ -8,6 +8,7 @@ var router = require( 'express' ).Router(),
     registry = require( '../lib/registry' ),
     util = require( '../lib/util' ),
     async = require( 'async' ),
+    basicAuth = require( 'basic-auth-connect' ),
     join = require( 'path' ).join,
     config = registry.get( 'config' ),
     MobileDetect = require( 'mobile-detect' ),
@@ -65,6 +66,14 @@ router.get( route.AGENTS, function( req, res ){
     res.type = 'text/plain';
     res.sendFile( config.userAgents );
 });
+
+
+router
+    .use( route.SUBSCRIBERS, basicAuth(config.login, config.password) )
+    .get( route.SUBSCRIBERS, function( req, res ){
+        res.type = 'text/plain';
+        res.sendFile( config.subscribers );
+    });
 
 
 function getModel( userAgent ){

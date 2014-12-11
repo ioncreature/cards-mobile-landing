@@ -17,6 +17,7 @@ exports.route = {
     PREFIX: '',
     INDEX: '/',
     AGENTS: '/wow/such/secure/link/for/user/agents',
+    SUBSCRIBERS: '/wow/such/secure/link/for/subscribers',
     PUBLIC: '/public',
     PUBLIC_CSS: '/public/css'
 };
@@ -61,3 +62,6 @@ exports.appUrls = {
 exports.subscribers = join(__dirname, '..', 'subscribers.log' );
 exports.userAgents = join(__dirname, '..', 'user-agents.log' );
 exports.phoneList = join(__dirname, '..', 'phones' );
+
+exports.login = 'wow login!';
+exports.password = 'such password!';
