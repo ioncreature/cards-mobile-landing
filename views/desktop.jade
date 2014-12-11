@@ -147,7 +147,7 @@ html
                         br
                         | для вашей модели телефона
                     form#desktop(action=route.PREFIX + route.INDEX, method='POST')
-                        input(type='text', name='model', placeholder='Выберите вашу модель телефона', list="models")
+                        input(type='text', name='model', placeholder='Выберите вашу модель телефона', list="models", autocomplete='on')
                         br
                         input(type='email', name='email', placeholder='Ваш e-mail')
                         input(type='submit', value='OK')

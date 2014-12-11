@@ -80,7 +80,7 @@ $( function(){
         Object.keys( data ).forEach( function( vendor ){
             if ( data[vendor].length )
                 data[vendor].forEach( function( model ){
-                    forDataList.push( vendor + ' ' + model, model + ' ' + vendor );
+                    forDataList.push( vendor + ' ' + model, model + ', ' + vendor );
                 });
             else
                 forDataList.push( vendor );
