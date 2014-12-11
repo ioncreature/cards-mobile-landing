@@ -46,7 +46,7 @@ html
             .wrapper
                 .block.left-floated
                     h1
-                        | Для установки приложения на совместимый телефон откройте эту страницу со смартфона
+                        | Установите «Кошелёк» и&nbsp;оплачивайте покупки прикосновением телефона
         // MODELS
         #best-wallet.slide
             .wrapper
@@ -134,21 +134,27 @@ html
                     | обновление прошивки
                 .block(style='clear:both;')
                     img(src='http://cardsmobile.ru/misc/spacer.png', width='1', height='80')
-                .block
-                    .text
-                        h2
-                            | Мы сообщим вам о появлении «Кошелька»
-                            br
-                            | для вашей модели телефона
-                        form#desktop(action=route.PREFIX + route.INDEX, method='POST')
-                            select(name='vendor', placeholder="Выберите производителя")
-                            br
-                            select(name='model', placeholder="Выберите модель")
-                            br
-                            input(type='email', name='email', placeholder='Ваш e-mail')
-                            input(type='submit', value='OK')
-                        .row.thanks(style="text-align: center")
-                            h2 Спасибо!
+            .block(style='background-color: #E0E0E0;')
+                .text
+                    h2 Как загрузить «Кошелёк»
+                    p Если ваш телефон входит в список совместимых моделей и официально приобретен в РФ, то приложение «Кошелёк» уже установлено в вашем телефоне.
+                    p Или вы можете скачать приложение, открыв эту страницу с мобильного телефона.
+
+             .block
+                .text
+                    h2
+                        | Мы сообщим вам о появлении «Кошелька»
+                        br
+                        | для вашей модели телефона
+                    form#desktop(action=route.PREFIX + route.INDEX, method='POST')
+                        select(name='vendor', placeholder="Выберите производителя")
+                        br
+                        select(name='model', placeholder="Выберите модель")
+                        br
+                        input(type='email', name='email', placeholder='Ваш e-mail')
+                        input(type='submit', value='OK')
+                    .row.thanks(style="text-align: center")
+                        h2 Спасибо!
         // FOOTER
         #footer.slide
             .wrapper

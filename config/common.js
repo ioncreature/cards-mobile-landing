@@ -5,8 +5,6 @@
 
 var join = require( 'path' ).join;
 
-exports.title = 'Cards Mobile';
-
 exports.processTitle = 'device-monitor';
 
 exports.cookieTtl = 6 * 3600 * 1000;
