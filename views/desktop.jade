@@ -147,12 +147,11 @@ html
                         br
                         | для вашей модели телефона
                     form#desktop(action=route.PREFIX + route.INDEX, method='POST')
-                        select(name='vendor', placeholder="Выберите производителя")
-                        br
-                        select(name='model', placeholder="Выберите модель")
+                        input(type='text', name='model', placeholder='Выберите вашу модель телефона', list="models")
                         br
                         input(type='email', name='email', placeholder='Ваш e-mail')
                         input(type='submit', value='OK')
+                        datalist#models
                     .row.thanks(style="text-align: center")
                         h2 Спасибо!
         // FOOTER

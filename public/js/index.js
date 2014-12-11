@@ -4,19 +4,14 @@
  */
 
 $( function(){
-    //if ( localStorage.sent )
-    //    showSocial();
-
     $( 'form' ).submit( function( event ){
         if ( isValid(this) ){
-            localStorage.sent = 'yo';
             showSocial();
             $.ajax({
                 url: '/download/',
                 type: 'POST',
                 data: {
-                    vendor: $( 'select[name="vendor"]' ).val(),
-                    model: $( 'select[name="model"]' ).val(),
+                    model: $( 'input[name="model"]' ).val(),
                     email: $( 'input[name="email"]' ).val()
                 }
             }).done( function(){
@@ -81,27 +76,25 @@ $( function(){
 
     if ( typeof phones === 'object' ){
         var data = window.phones,
-            vendorSelect = $( 'select[name="vendor"]' ),
-            modelSelect = $( 'select[name="model"]' );
-
-        vendorSelect.change( function(){
-            var vendor = vendorSelect.val();
-            if ( vendor )
-                fillSelect( modelSelect, data[vendor] );
+            forDataList = [];
+        Object.keys( data ).forEach( function( vendor ){
+            if ( data[vendor].length )
+                data[vendor].forEach( function( model ){
+                    forDataList.push( vendor + ' ' + model, model + ' ' + vendor );
+                });
+            else
+                forDataList.push( vendor );
         });
 
-        fillSelect( vendorSelect, Object.keys(data) );
-        vendorSelect.val( 'Apple' );
-        vendorSelect.change();
-        modelSelect.val( 'iPhone 6' );
+        fillDatalist( $('datalist#models'), forDataList );
     }
 
 
-    function fillSelect( select, list ){
+    function fillDatalist( elem, list ){
         var html = list.map( function( str ){
-            return '<option value="' + str + '">' + str + '</option>';
+            return '<option>' + str + '</option>';
         }).join( '' );
 
-        select.html( html );
+        elem.html( html );
     }
 });

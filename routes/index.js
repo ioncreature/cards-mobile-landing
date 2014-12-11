@@ -43,8 +43,7 @@ router.get( route.INDEX, function( req, res ){
 
 router.post( route.INDEX, function( req, res ){
     var ua = req.header( 'User-Agent' ),
-        vendor = req.body.vendor || '',
-        model = req.body.model ? (vendor + ' ' + req.body.model) : getModel( ua ),
+        model = req.body.model || getModel( ua ),
         email = req.body.email;
 
     if ( model && email ){
