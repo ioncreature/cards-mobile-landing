@@ -106,7 +106,7 @@ $( function(){
             {
                 hint: false,
                 highlight: true,
-                minLength: 1
+                minLength: 2
             },
             {
                 name: 'models',
