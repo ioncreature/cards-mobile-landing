@@ -148,11 +148,9 @@ html
                         | для вашей модели телефона
                     form#desktop(action=route.PREFIX + route.INDEX, method='POST')
                         input(type='text', name='model', placeholder='Ваша модель телефона')
-                        //input(type='text', name='model', placeholder='Ваша модель телефона', list="models", autocomplete='on')
                         br
                         input(type='email', name='email', placeholder='Ваш e-mail')
                         input(type='submit', value='OK')
-                        datalist#models
                     .row.thanks(style="text-align: center")
                         h2 Спасибо!
         // FOOTER
