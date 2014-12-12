@@ -76,17 +76,49 @@ $( function(){
 
     if ( typeof phones === 'object' ){
         var data = window.phones,
-            forDataList = [];
+            list = [],
+            extendedList = [];
         Object.keys( data ).forEach( function( vendor ){
             if ( data[vendor].length )
                 data[vendor].forEach( function( model ){
-                    forDataList.push( vendor + ' ' + model, model + ', ' + vendor );
+                    list.push( vendor + ' ' + model );
+                    extendedList.push( vendor + ' ' + model, model + ', ' + vendor );
                 });
             else
-                forDataList.push( vendor );
+                extendedList.push( vendor );
         });
 
-        fillDatalist( $('datalist#models'), forDataList );
+        fillDatalist( $('datalist#models'), extendedList );
+
+
+        var substringMatcher = function( strs ){
+            var maxLength = 8;
+            return function findMatches( q, cb ){
+                var matches = [],
+                    substrRegex = new RegExp( q, 'i' ),
+                    i = 0;
+                for (; i < strs.length; i++ ){
+                    if ( substrRegex.test(strs[i] ) )
+                        matches.push( {value: strs[i]} );
+                    if ( matches.length >= maxLength )
+                        break;
+                }
+                cb( matches );
+            };
+        };
+
+        $( 'input[name="model"]' ).typeahead(
+            {
+                hint: false,
+                highlight: true,
+                minLength: 1
+            },
+            {
+                name: 'models',
+                displayKey: 'value',
+                source: substringMatcher( list )
+            }
+        );
     }
 
 

@@ -2,6 +2,7 @@
     "name": "cards-service",
     "dependencies": {
         "jquery": "2.1.x",
-        "bootstrap": "3.3.x"
+        "bootstrap": "3.3.x",
+        "typehead.js": "0.10.x"
     }
 }

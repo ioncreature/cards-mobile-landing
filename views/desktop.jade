@@ -147,7 +147,8 @@ html
                         br
                         | для вашей модели телефона
                     form#desktop(action=route.PREFIX + route.INDEX, method='POST')
-                        input(type='text', name='model', placeholder='Ваша модель телефона', list="models", autocomplete='on')
+                        input(type='text', name='model', placeholder='Ваша модель телефона')
+                        //input(type='text', name='model', placeholder='Ваша модель телефона', list="models", autocomplete='on')
                         br
                         input(type='email', name='email', placeholder='Ваш e-mail')
                         input(type='submit', value='OK')
@@ -198,6 +199,7 @@ html
                             ga('create', 'UA-51462736-1', 'cardsmobile.ru');
                             ga('send', 'pageview');
 
-        script(src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js")
+        script(src='//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js')
+        script(src=route.PREFIX + '/public/bower/typehead.js/dist/typeahead.jquery.min.js')
         script(src=route.PREFIX + '/public/js/index.js')
 
