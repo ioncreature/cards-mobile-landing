@@ -61,7 +61,7 @@ exports.appUrls = {
 
 exports.subscribers = join(__dirname, '..', 'subscribers.log' );
 exports.userAgents = join(__dirname, '..', 'user-agents.log' );
-exports.phoneList = join(__dirname, '..', 'phones' );
+exports.phoneList = join(__dirname, '..', 'phones.json' );
 
 exports.login = 'wow login!';
 exports.password = 'such password!';

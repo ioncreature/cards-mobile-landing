@@ -88,7 +88,7 @@ async.parallelLimit( tasks, 7, function( error, results ){
             return prev;
         }, {} );
 
-        fs.writeFileSync( 'phones', JSON.stringify(res, null, '  '), {encoding: 'utf8'} );
+        fs.writeFileSync( 'phones.json', JSON.stringify(res, null, '  '), {encoding: 'utf8'} );
         console.log( 'Success!' );
         process.exit();
     }
