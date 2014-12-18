@@ -40,7 +40,7 @@ h2 {
 }
 
 a {
-    text-decoration: none;
+    color: inherit;
 }
 
 p {
@@ -66,12 +66,13 @@ form {
     }
 
     input[type="radio"], input[type="checkbox"]  {
-        width: 30px;
+        max-width: 25px;
+        margin-right: 8px;
     }
 
     textarea {
         min-height: 100px;
-        margin-bottom: 40px;
+        margin-bottom: 20px;
     }
 
 
@@ -82,14 +83,28 @@ form {
     small {
         display: block;
         margin: 0 0 20px;
+        color: grey;
     }
 
     datalist {
         overflow: scroll;
     }
 
+    .version {
+        padding: 12px 15px;
+        border: 1px solid #aaa;
+        border-radius: 4px;
+        text-align: center;
+
+        label {
+            display: inline-block;
+            width: 180px;
+            cursor: pointer;
+        }
+    }
+
     input[type="submit"] {
-        margin-top: 10px;
+        margin-top: 20px;
         border: 1px solid #F15A29;
         background-color: #F15A29;
         color: white;
@@ -100,7 +115,6 @@ form {
         border-color: #EE4433;
         background-color: #FFE5E5;
     }
-
 }
 
 .thanks {

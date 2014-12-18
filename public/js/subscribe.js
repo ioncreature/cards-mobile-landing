@@ -8,7 +8,7 @@ $( function(){
         name = form.find( 'input[name="name"]' ),
         email = form.find( 'input[type="email"]' ),
         phone = form.find( 'input[name="phone"]' ),
-        model = form.find( 'input[name="model"]' ),
+        model = form.find( 'select[name="model"]' ),
         version = form.find( 'input[name="version"]' ),
         imei = form.find( 'input[name="imei"]' ),
         comment = form.find( 'textarea[name="comment"]' ),
@@ -86,33 +86,39 @@ $( function(){
                 list.push( vendor );
         });
 
-        var substringMatcher = function( strs ){
-            var maxLength = 8;
-            return function findMatches( q, cb ){
-                var matches = [],
-                    substrRegex = new RegExp( q, 'i' ),
-                    i = 0;
-                for (; i < strs.length; i++ ){
-                    if ( substrRegex.test(strs[i] ) )
-                        matches.push( {value: strs[i]} );
-                    if ( matches.length >= maxLength )
-                        break;
-                }
-                cb( matches );
-            };
-        };
+        var options = list.map( function( item ){
+            return '<option value="' + item + '">' + item + '</option>';
+        }).join( '' );
 
-        $( 'input[name="model"]' ).typeahead(
-            {
-                hint: false,
-                highlight: true,
-                minLength: 2
-            },
-            {
-                name: 'models',
-                displayKey: 'value',
-                source: substringMatcher( list )
-            }
-        );
+        model.append( options );
+
+        //var substringMatcher = function( strs ){
+        //    var maxLength = 8;
+        //    return function findMatches( q, cb ){
+        //        var matches = [],
+        //            substrRegex = new RegExp( q, 'i' ),
+        //            i = 0;
+        //        for (; i < strs.length; i++ ){
+        //            if ( substrRegex.test(strs[i] ) )
+        //                matches.push( {value: strs[i]} );
+        //            if ( matches.length >= maxLength )
+        //                break;
+        //        }
+        //        cb( matches );
+        //    };
+        //};
+
+        //$( 'input[name="model"]' ).typeahead(
+        //    {
+        //        hint: false,
+        //        highlight: true,
+        //        minLength: 2
+        //    },
+        //    {
+        //        name: 'models',
+        //        displayKey: 'value',
+        //        source: substringMatcher( list )
+        //    }
+        //);
     }
 });
