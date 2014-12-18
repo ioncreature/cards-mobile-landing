@@ -1,0 +1,56 @@
+// @author Alexander Marenin
+// @date December 2014
+
+doctype html
+html
+    head
+        link(rel='stylesheet', href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,300,600&subset=latin,cyrillic')
+        link(rel='stylesheet', href=route.PREFIX + '/public/css/subscribe-form.css')
+    body
+        if thanks
+            .center
+                h2 Спасибо!
+        else
+            form(action=route.PREFIX + route.SUBSCRIBE_FORM, method='POST')
+                if error
+                    p.error= error
+                input(type='text', name='name', placeholder='Ваше имя', value=data.name || '', required, autofocus)
+                small Для того, чтобы мы знали как к вам обращаться.
+
+                input(type='email', name='email', placeholder='Ваш e-mail', value=data.email || '',required)
+                small На этот адрес мы отправим вам ссылку для скачивания приложения.
+
+                input(type='text', name='phone', placeholder='Ваш номер телефона', value=data.phone || '',required)
+                small Номер телефона — один из идентификаторов вас как пользователя «Кошелька».
+
+                input(type='text', name='model', placeholder='Ваша модель телефона', value=data.model || '',required)
+                small Версии приложения могут различаться в зависимости от модели телефона.
+
+                label
+                    input(type='radio', name='version', value='4.4', checked=data.version === '4.4', required)
+                    | Android 4.4
+                label
+                    input(type='radio', name='version', value='5.0', checked=data.version === '5.0', required)
+                    | Android 5.0
+                small Версия Android обязательно должна быть не меньше 4.4 (KitKat).
+
+                input(type='text', name='imei', placeholder='IMEI (Идентификационный код устройства)', value=data.imei || '',required)
+                small Приложение будет доступно только для указанного IMEI. Пожалуйста, заполните это поле без ошибок.
+
+                textarea(name='comment', placeholder='Почему вы хотите принять участие в тестировании?', value=data.comment || '',required)
+
+                label
+                    input(type='checkbox', name='agree', value='yo!', checked=!!data.agree, required)
+                    | Я согласен с соглашением о неразглашении информации, а так же с тем,
+                    | что организатор тестирования не несет никакой ответственности за любые убытки, причиненные в результате тестирования.
+
+                input(type='submit', value='OK')
+            .thanks.center
+                h2 Спасибо!
+
+            script(src='//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js')
+            script(src=route.PREFIX + '/public/bower/typehead.js/dist/typeahead.jquery.min.js')
+            script.
+                var phones = !{phones};
+                var url = '!{url}';
+            script(src=route.PREFIX + '/public/js/subscribe.js')

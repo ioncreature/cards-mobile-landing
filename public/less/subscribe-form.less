@@ -1,0 +1,142 @@
+/**
+ * @author Alexander Marenin
+ * @date December 2014
+ */
+
+@font-family: 'Open Sans', sans-serif;
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    position: relative;
+}
+
+html, body {
+    min-height: 100%;
+}
+
+html, body, div {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: @font-family;
+    font-size: 16px;
+    line-height: 1.42;
+    color: #333;
+    margin-bottom: 50px;
+}
+
+h2 {
+    font-family: @font-family;
+    font-style: italic;
+    font-weight: normal;
+    font-size: 29px;
+    margin: 20px 0 10px;
+    line-height: 1.1;
+}
+
+a {
+    text-decoration: none;
+}
+
+p {
+    margin: 0 0 10px;
+}
+
+
+form {
+    width: 480px;
+    display: block;
+    margin: 20px auto;
+
+    input, select, textarea, button {
+        padding: 12px 15px;
+        border: 1px solid #aaa;
+        border-radius: 4px;
+        font-family: inherit;
+        font-size: inherit;
+        line-height: inherit;
+        color: inherit;
+        margin: 0;
+        width: 480px;
+    }
+
+    input[type="radio"], input[type="checkbox"]  {
+        width: 30px;
+    }
+
+    textarea {
+        min-height: 100px;
+        margin-bottom: 40px;
+    }
+
+
+    label {
+        display: block;
+    }
+
+    small {
+        display: block;
+        margin: 0 0 20px;
+    }
+
+    datalist {
+        overflow: scroll;
+    }
+
+    input[type="submit"] {
+        margin-top: 10px;
+        border: 1px solid #F15A29;
+        background-color: #F15A29;
+        color: white;
+        -webkit-appearance: none;
+    }
+
+    input.error {
+        border-color: #EE4433;
+        background-color: #FFE5E5;
+    }
+
+}
+
+.thanks {
+    display: none;
+}
+
+.tt-dropdown-menu {
+    width: 310px;
+    margin-top: -1px;
+    padding: 8px 0;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    -webkit-box-shadow: 0 5px 10px rgba(0,0,0,.2);
+    -moz-box-shadow: 0 5px 10px rgba(0,0,0,.2);
+    box-shadow: 0 5px 10px rgba(0,0,0,.2);
+}
+
+.tt-suggestion {
+    padding: 12px 15px;
+    font-size: inherit;
+    line-height: inherit;
+
+    &.tt-cursor {
+        padding: 12px 15px;
+        color: white;
+        cursor: pointer;
+        background-color: #F15A29;
+    }
+    p {
+        margin: 0;
+    }
+}
+
+.center {
+    text-align: center;
+}

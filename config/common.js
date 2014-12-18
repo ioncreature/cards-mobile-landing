@@ -18,6 +18,7 @@ exports.route = {
     INDEX: '/',
     AGENTS: '/wow/such/secure/link/for/user/agents',
     SUBSCRIBERS: '/wow/such/secure/link/for/subscribers',
+    SUBSCRIBE_FORM: '/cloud/subscribe',
     PUBLIC: '/public',
     PUBLIC_CSS: '/public/css'
 };
@@ -60,6 +61,7 @@ exports.appUrls = {
 };
 
 exports.subscribers = join(__dirname, '..', 'subscribers.log' );
+exports.cloudSubscribers = join(__dirname, '..', 'cloud-subscribers.log' );
 exports.userAgents = join(__dirname, '..', 'user-agents.log' );
 exports.phoneList = join(__dirname, '..', 'phones.json' );
 

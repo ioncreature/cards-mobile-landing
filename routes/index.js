@@ -15,7 +15,8 @@ var router = require( 'express' ).Router(),
     mailer = require( 'nodemailer' ),
     directTransport = require( 'nodemailer-direct-transport' ),
     route = config.route,
-    phonesString = loadPhonesString();
+    phonesString = loadPhonesString(),
+    subscribePhonesString = loadPhonesString();
 
 module.exports = router;
 
@@ -73,6 +74,51 @@ router
         res.type = 'text/plain';
         res.sendFile( config.subscribers );
     });
+
+
+router.get( route.SUBSCRIBE_FORM, function( req, res ){
+    res.render( 'subscribe-form', {
+        url: route.PREFIX + route.SUBSCRIBE_FORM,
+        phones: subscribePhonesString,
+        data: {}
+    });
+});
+
+
+router.post( route.SUBSCRIBE_FORM, function( req, res ){
+    var b = req.body,
+        name = b.name,
+        email = b.email,
+        phone = b.phone,
+        model = b.model,
+        version = b.version,
+        imei = b.imei,
+        comment = b.comment,
+        agree = b.agree;
+
+    console.log( b );
+
+    if ( name && email && phone && model && version && imei && comment && agree ){
+        fs.appendFile( config.cloudSubscribers, JSON.stringify({
+            date: new Date,
+            name: name,
+            email: email,
+            phone: phone,
+            model: model,
+            version: version,
+            imei: imei,
+            comment: comment
+        }) + '\n', util.noop );
+        res.render( 'subscribe-form', {thanks: true} );
+    }
+    else
+        res.render( 'subscribe-form', {
+            url: route.PREFIX + route.SUBSCRIBE_FORM,
+            error: 'Все поля являются обязательными',
+            phones: subscribePhonesString,
+            data: b
+        });
+});
 
 
 function getModel( userAgent ){
