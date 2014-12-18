@@ -19,6 +19,7 @@ exports.route = {
     AGENTS: '/wow/such/secure/link/for/user/agents',
     SUBSCRIBERS: '/wow/such/secure/link/for/subscribers',
     SUBSCRIBE_FORM: '/cloud/subscribe',
+    SUBSCRIBE_FORM_DATA: '/cloud/subscribe/pa/pa/pi/du/pu',
     PUBLIC: '/public',
     PUBLIC_CSS: '/public/css'
 };

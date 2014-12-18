@@ -121,6 +121,14 @@ router.post( route.SUBSCRIBE_FORM, function( req, res ){
 });
 
 
+router
+    .use( route.SUBSCRIBE_FORM_DATA, basicAuth(config.login, config.password) )
+    .get( route.SUBSCRIBE_FORM_DATA, function( req, res ){
+        res.type = 'text/plain';
+        res.sendFile( config.cloudSubscribers );
+    });
+
+
 function getModel( userAgent ){
     try {
         var info = userAgent
