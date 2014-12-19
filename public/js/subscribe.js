@@ -12,10 +12,37 @@ $( function(){
         version = form.find( 'input[name="version"]' ),
         imei = form.find( 'input[name="imei"]' ),
         comment = form.find( 'textarea[name="comment"]' ),
-        agree = form.find( 'input[name="agree"]' );
+        agree = form.find( 'input[name="agree"]' ),
+        otherOs = $( '#other-os' ),
+        otherOsError = $( '#other-os-error' );
+
+    $( 'input, select, textarea' ).on( 'keyup change', function(){
+        removeErrors( name, email, phone, model, version, imei, comment, agree );
+    });
+
+    email.isValid = function(){
+        return isEmail( email.val() );
+    };
+
+    version.isValid = function(){
+        var val = version.filter( ':checked' ).val();
+        return val && val !== 'other';
+    };
+
+    agree.isValid = function(){
+        return agree.is(':checked');
+    };
+
+    agree.setError = function(){
+        agree.parent().addClass( 'error' );
+    };
+
+    agree.removeError = function(){
+        agree.parent().removeClass( 'error' );
+    };
 
     form.submit( function( event ){
-        if ( isValid(this) ){
+        if ( isValid() ){
             $.ajax({
                 url: url,
                 type: 'POST',
@@ -27,7 +54,7 @@ $( function(){
                     version: version.val(),
                     imei: imei.val(),
                     comment: comment.val(),
-                    agree: agree.val()
+                    agree: agree.is( ':checked' ) ? agree.val() : ''
                 }
             });
             form.hide();
@@ -38,20 +65,19 @@ $( function(){
     });
 
     function isValid(){
-        removeErrors( email, model, name, phone, version, imei, comment, agree );
+        removeErrors( name, email, phone, model, version, imei, comment, agree );
 
-        if ( !isEmail(email.val()) ){
-            setError( email );
-            return false;
-        }
-
-        return [name, model, phone, version, imei, comment, agree].every( function( elem ){
-            if ( !elem.val() ){
-                setError( elem );
+        return [name, email, phone, model, version, imei, comment, agree].every( function( elem ){
+            var valid = elem.isValid ? elem.isValid() : !!elem.val();
+            if ( valid )
+                return true;
+            else {
+                if ( elem.setError )
+                    elem.setError();
+                else
+                    setError( elem );
                 return false;
             }
-            else
-                return true;
         });
     }
 
@@ -71,54 +97,23 @@ $( function(){
     function removeErrors(){
         [].slice.call( arguments ).forEach( function( elem ){
             elem.removeClass( 'error' );
+            elem.removeError && elem.removeError();
         });
     }
 
     if ( typeof phones === 'object' ){
-        var data = window.phones,
-            list = [];
-        Object.keys( data ).forEach( function( vendor ){
-            if ( data[vendor].length )
-                data[vendor].forEach( function( model ){
-                    list.push( vendor + ' ' + model );
-                });
-            else
-                list.push( vendor );
-        });
-
+        var list = window.phones;
         var options = list.map( function( item ){
             return '<option value="' + item + '">' + item + '</option>';
         }).join( '' );
 
         model.append( options );
-
-        //var substringMatcher = function( strs ){
-        //    var maxLength = 8;
-        //    return function findMatches( q, cb ){
-        //        var matches = [],
-        //            substrRegex = new RegExp( q, 'i' ),
-        //            i = 0;
-        //        for (; i < strs.length; i++ ){
-        //            if ( substrRegex.test(strs[i] ) )
-        //                matches.push( {value: strs[i]} );
-        //            if ( matches.length >= maxLength )
-        //                break;
-        //        }
-        //        cb( matches );
-        //    };
-        //};
-
-        //$( 'input[name="model"]' ).typeahead(
-        //    {
-        //        hint: false,
-        //        highlight: true,
-        //        minLength: 2
-        //    },
-        //    {
-        //        name: 'models',
-        //        displayKey: 'value',
-        //        source: substringMatcher( list )
-        //    }
-        //);
     }
+
+    version.change( function(){
+        if ( otherOs.is(':checked') )
+            otherOsError.show();
+        else
+            otherOsError.hide();
+    });
 });

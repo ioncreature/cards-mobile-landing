@@ -65,6 +65,7 @@ exports.subscribers = join(__dirname, '..', 'subscribers.log' );
 exports.cloudSubscribers = join(__dirname, '..', 'cloud-subscribers.log' );
 exports.userAgents = join(__dirname, '..', 'user-agents.log' );
 exports.phoneList = join(__dirname, '..', 'phones.json' );
+exports.cloudPhoneList = join(__dirname, '..', 'cloud-phones' );
 
 exports.login = 'wow login!';
 exports.password = 'such password!';

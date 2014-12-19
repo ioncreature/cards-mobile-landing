@@ -16,7 +16,7 @@ var router = require( 'express' ).Router(),
     directTransport = require( 'nodemailer-direct-transport' ),
     route = config.route,
     phonesString = loadPhonesString(),
-    subscribePhonesString = loadPhonesString();
+    subscribePhonesString = loadCloudPhonesString();
 
 module.exports = router;
 
@@ -169,6 +169,20 @@ function sendMail( email, callback ){
 function loadPhonesString(){
     try {
         return fs.readFileSync(config.phoneList, {encoding: 'utf8'} );
+    }
+    catch ( error ){
+        console.log( error );
+        return '[]';
+    }
+}
+
+
+function loadCloudPhonesString(){
+    try {
+        return fs
+            .readFileSync(config.cloudPhoneList, {encoding: 'utf8'} )
+            .replace( /\n/gm, ';' )
+            .replace( /\r/gm, '' );
     }
     catch ( error ){
         console.log( error );

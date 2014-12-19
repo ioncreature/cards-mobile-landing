@@ -4,6 +4,7 @@
 doctype html
 html
     head
+        meta(charset='UTF-8')
         link(rel='stylesheet', href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,300,600&subset=latin,cyrillic')
         link(rel='stylesheet', href=route.PREFIX + '/public/css/subscribe-form.css')
     body
@@ -12,38 +13,44 @@ html
                 h2 Спасибо!
         else
             form(action=route.PREFIX + route.SUBSCRIBE_FORM, method='POST')
+                h2.center Анкета участника тестирования
+                br
                 if error
                     p.error= error
-                input(type='text', name='name', placeholder='Ваше имя', value=data.name || '', required, autofocus)
+                input(type='text', name='name', placeholder='Имя', value=data.name || '', autofocus)
                 small Для того, чтобы мы знали как к вам обращаться.
 
-                input(type='email', name='email', placeholder='Ваш e-mail', value=data.email || '', required)
+                input(type='email', name='email', placeholder='E-mail', value=data.email || '')
                 small На этот адрес мы отправим вам ссылку для скачивания приложения.
 
-                input(type='text', name='phone', placeholder='Ваш номер телефона', value=data.phone || '', required)
+                input(type='text', name='phone', placeholder='Номер телефона', value=data.phone || '')
                 small Номер телефона — один из идентификаторов вас как пользователя «Кошелька».
 
                 //input(type='text', name='model', placeholder='Ваша модель телефона', value=data.model || '',required)
-                select(name='model', placeholder='Ваша модель телефона', required)
-                    option(value='') Ваша модель телефона
+                select(name='model', placeholder='Модель телефона')
+                    option(value='') Модель телефона
                 small Версии приложения могут различаться в зависимости от модели телефона.
 
                 .version
                     label
-                        input(type='radio', name='version', value='4.4', checked=data.version === '4.4', required)
+                        input(type='radio', name='version', value='4.4', checked=data.version === '4.4')
                         | Android 4.4
                     label
-                        input(type='radio', name='version', value='5.0', checked=data.version === '5.0', required)
+                        input(type='radio', name='version', value='5.0', checked=data.version === '5.0')
                         | Android 5.0
+                    label
+                        input#other-os(type='radio', name='version', value='other', checked=data.version === 'other')
+                        | Другая OS
                 small Версия Android обязательно должна быть не меньше 4.4 (KitKat).
+                p#other-os-error.error.hidden Тестирование возможно только на  телефонах с Android 4.4 и Android 5.0.
 
-                input(type='text', name='imei', placeholder='IMEI (Идентификационный код устройства)', value=data.imei || '',required)
+                input(type='text', name='imei', placeholder='IMEI (Идентификационный код устройства)', value=data.imei || '')
                 small Приложение будет доступно только для указанного IMEI. Пожалуйста, заполните это поле без ошибок.
 
-                textarea(name='comment', placeholder='Почему вы хотите принять участие в тестировании?', value=data.comment || '',required)
+                textarea(name='comment', placeholder='Почему вы хотите принять участие в тестировании?')= data.comment || ''
 
                 label
-                    input(type='checkbox', name='agree', value='yo!', checked=!!data.agree, required)
+                    input(type='checkbox', name='agree', value='yo!', checked=!!data.agree)
                     | Я согласен &nbsp;
                     a(href='/cloud/terms.pdf') с соглашением о неразглашении информации
                     |, а так же с тем,
@@ -58,6 +65,6 @@ html
             script(src='//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js')
             script(src=route.PREFIX + '/public/bower/typehead.js/dist/typeahead.jquery.min.js')
             script.
-                var phones = !{phones};
+                var phones = "!{phones}".split( ';' );
                 var url = '!{url}';
             script(src=route.PREFIX + '/public/js/subscribe.js')
