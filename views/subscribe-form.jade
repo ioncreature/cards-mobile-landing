@@ -26,7 +26,6 @@ html
                 input(type='text', name='phone', placeholder='Номер телефона', value=data.phone || '')
                 small Номер телефона — один из идентификаторов вас как пользователя «Кошелька».
 
-                //input(type='text', name='model', placeholder='Ваша модель телефона', value=data.model || '',required)
                 select(name='model', placeholder='Модель телефона')
                     option(value='') Модель телефона
                 small Версии приложения могут различаться в зависимости от модели телефона.
@@ -63,7 +62,6 @@ html
                     | Мы свяжемся с вами, когда начнется тестирование.
 
             script(src='//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js')
-            script(src=route.PREFIX + '/public/bower/typehead.js/dist/typeahead.jquery.min.js')
             script.
                 var phones = "!{phones}".split( ';' );
                 var url = '!{url}';

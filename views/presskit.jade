@@ -1,0 +1,22 @@
+// @author Marenin Alexander
+// @date December 2014
+
+doctype html
+html
+    head
+        meta(charset='UTF-8')
+        link(rel='stylesheet', href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,300,600&subset=latin,cyrillic')
+        link(rel='stylesheet', href=route.PREFIX + '/public/css/presskit.css')
+    body
+        if thanks
+            .center
+                h2 Спасибо!
+        else
+            form(action=route.PREFIX + route.PRESSKIT_SUBSCRIBE, method='POST')
+                h2.center Подпишитесь на новости
+                input(type='email', name='email', placeholder='E-mail')
+                input(type='submit', value='Подписаться')
+            .thanks.center
+                h2 Спасибо!
+            script(src='//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js')
+            script(src=route.PREFIX + '/public/js/subscribe.js')

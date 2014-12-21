@@ -20,6 +20,7 @@ exports.route = {
     SUBSCRIBERS: '/wow/such/secure/link/for/subscribers',
     SUBSCRIBE_FORM: '/cloud/subscribe',
     SUBSCRIBE_FORM_DATA: '/cloud/subscribe/pa/pa/pi/du/pu',
+    PRESSKIT_SUBSCRIBE: '/presskit/subscribe',
     PUBLIC: '/public',
     PUBLIC_CSS: '/public/css'
 };
@@ -63,6 +64,7 @@ exports.appUrls = {
 
 exports.subscribers = join(__dirname, '..', 'subscribers.log' );
 exports.cloudSubscribers = join(__dirname, '..', 'cloud-subscribers.log' );
+exports.presskitSubscribers = join(__dirname, '..', 'press-subscribers.log' );
 exports.userAgents = join(__dirname, '..', 'user-agents.log' );
 exports.phoneList = join(__dirname, '..', 'phones.json' );
 exports.cloudPhoneList = join(__dirname, '..', 'cloud-phones' );

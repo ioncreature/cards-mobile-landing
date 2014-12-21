@@ -121,6 +121,20 @@ router.post( route.SUBSCRIBE_FORM, function( req, res ){
 });
 
 
+router.get( route.PRESSKIT_SUBSCRIBE, function( req, res ){
+    res.render( 'presskit' );
+});
+
+
+router.post( route.PRESSKIT_SUBSCRIBE, function( req, res ){
+    var email = req.body.email;
+
+    if ( util.isEmail(email) )
+        addPresskitEmail( email );
+    res.end();
+});
+
+
 router
     .use( route.SUBSCRIBE_FORM_DATA, basicAuth(config.login, config.password) )
     .get( route.SUBSCRIBE_FORM_DATA, function( req, res ){
@@ -188,4 +202,9 @@ function loadCloudPhonesString(){
         console.log( error );
         return '[]';
     }
+}
+
+
+function addPresskitEmail( email ){
+    fs.appendFile( config.presskitSubscribers, (new Date) + ',' + email, {encoding: 'utf8'}, util.noop );
 }
