@@ -10,3 +10,5 @@ exports.proxyUsed = true;
 exports.port = 8081;
 
 exports.routePrefix = '/download';
+
+exports.presskitTo = 'a.marenin@i-free.com';

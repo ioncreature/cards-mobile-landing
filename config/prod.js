@@ -12,3 +12,5 @@ exports.proxyUsed = true;
 exports.routePrefix = '/download';
 
 exports.port = 80;
+
+exports.presskitTo = 'a.rubashenko@synqera.com';

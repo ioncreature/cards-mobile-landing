@@ -132,6 +132,19 @@ router.post( route.PRESSKIT_SUBSCRIBE, function( req, res ){
     var email = req.body.email,
         str = (new Date).toISOString() + ',' + email + '\n';
     fs.appendFile( config.presskitSubscribers, str, {encoding: 'utf8'}, util.noop );
+
+    mailer
+        .createTransport( directTransport({retryDelay: 1000, name: this.hostname}) )
+        .sendMail({
+            from: 'Страничка пресскита <presskit@cardsmobile.ru>',
+            to: config.presskitTo,
+            subject: 'Новый подписчик, аее!',
+            text: email
+        }, function( error, status ){
+            console.log( email );
+            console.log( error, status );
+        });
+
     res.end();
 });
 
