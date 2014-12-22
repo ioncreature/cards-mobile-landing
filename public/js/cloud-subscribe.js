@@ -68,6 +68,7 @@ $( function(){
             });
             form.hide();
             $( '.thanks' ).show();
+            window.parent && window.parent.postMessage( "Пыщ-пыщ", "*" );
         }
         event.preventDefault();
         return false;
