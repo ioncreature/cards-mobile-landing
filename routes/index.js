@@ -122,15 +122,16 @@ router.post( route.SUBSCRIBE_FORM, function( req, res ){
 
 
 router.get( route.PRESSKIT_SUBSCRIBE, function( req, res ){
-    res.render( 'presskit' );
+    res.render( 'presskit', {
+        url: route.PREFIX + route.PRESSKIT_SUBSCRIBE
+    });
 });
 
 
 router.post( route.PRESSKIT_SUBSCRIBE, function( req, res ){
-    var email = req.body.email;
-
-    if ( util.isEmail(email) )
-        addPresskitEmail( email );
+    var email = req.body.email,
+        str = (new Date).toISOString() + ',' + email + '\n';
+    fs.appendFile( config.presskitSubscribers, str, {encoding: 'utf8'}, util.noop );
     res.end();
 });
 
@@ -202,9 +203,4 @@ function loadCloudPhonesString(){
         console.log( error );
         return '[]';
     }
-}
-
-
-function addPresskitEmail( email ){
-    fs.appendFile( config.presskitSubscribers, (new Date) + ',' + email, {encoding: 'utf8'}, util.noop );
 }

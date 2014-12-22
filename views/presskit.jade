@@ -13,10 +13,16 @@ html
                 h2 Спасибо!
         else
             form(action=route.PREFIX + route.PRESSKIT_SUBSCRIBE, method='POST')
-                h2.center Подпишитесь на новости
-                input(type='email', name='email', placeholder='E-mail')
-                input(type='submit', value='Подписаться')
+                h2.center
+                    | Получайте последние новости
+                    br
+                    | о приложении «Кошелек»:
+                br
+                input(type='email', name='email', placeholder='Ваш e-mail', autofocus)
+                input(type='submit', value='ПОДПИСАТЬСЯ')
             .thanks.center
                 h2 Спасибо!
             script(src='//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js')
-            script(src=route.PREFIX + '/public/js/subscribe.js')
+            script.
+                var url = "!{url}";
+            script(src=route.PREFIX + '/public/js/presskit.js')
