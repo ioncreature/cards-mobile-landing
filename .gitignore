@@ -5,3 +5,6 @@ ScreenShots
 public/css
 ./subscribers.log
 ./user-agents.log
+cloud-subscribers.log
+press-subscribers.log
+**/press-subscribers.log

@@ -119,6 +119,14 @@ router.post( route.SUBSCRIBE_FORM, function( req, res ){
 });
 
 
+router
+    .use( route.SUBSCRIBE_FORM_DATA, basicAuth(config.login, config.password) )
+    .get( route.SUBSCRIBE_FORM_DATA, function( req, res ){
+        res.type = 'text/plain';
+        res.sendFile( config.cloudSubscribers );
+    });
+
+
 router.get( route.PRESSKIT_SUBSCRIBE, function( req, res ){
     res.render( 'presskit', {
         url: route.PREFIX + route.PRESSKIT_SUBSCRIBE
@@ -148,10 +156,10 @@ router.post( route.PRESSKIT_SUBSCRIBE, function( req, res ){
 
 
 router
-    .use( route.SUBSCRIBE_FORM_DATA, basicAuth(config.login, config.password) )
-    .get( route.SUBSCRIBE_FORM_DATA, function( req, res ){
+    .use( route.PRESSKIT_SUBSCRIBE_DATA, basicAuth(config.login, config.password) )
+    .get( route.PRESSKIT_SUBSCRIBE_DATA, function( req, res ){
         res.type = 'text/plain';
-        res.sendFile( config.cloudSubscribers );
+        res.sendFile( config.presskitSubscribers );
     });
 
 

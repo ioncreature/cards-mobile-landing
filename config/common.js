@@ -21,6 +21,7 @@ exports.route = {
     SUBSCRIBE_FORM: '/cloud/subscribe',
     SUBSCRIBE_FORM_DATA: '/cloud/subscribe/pa/pa/pi/du/pu',
     PRESSKIT_SUBSCRIBE: '/presskit/subscribe',
+    PRESSKIT_SUBSCRIBE_DATA: '/presskit/subscribe/hey/who/they/are',
     PUBLIC: '/public',
     PUBLIC_CSS: '/public/css'
 };
