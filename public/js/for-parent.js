@@ -10,5 +10,6 @@ var eventMethod = window.addEventListener ? "addEventListener" : "attachEvent",
 
 eventer( messageEvent, function(){
     iframe.style.height = '200px';
+    iframe.scrollIntoView( true );
 }, false );
 
