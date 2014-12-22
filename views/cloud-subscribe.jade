@@ -6,7 +6,7 @@ html
     head
         meta(charset='UTF-8')
         link(rel='stylesheet', href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,300,600&subset=latin,cyrillic')
-        link(rel='stylesheet', href=route.PREFIX + '/public/css/subscribe-form.css')
+        link(rel='stylesheet', href=route.PREFIX + '/public/css/cloud-subscribe.css')
     body
         if thanks
             .center
@@ -55,9 +55,11 @@ html
                     |, а так же с тем,
                     | что организатор тестирования не несет никакой ответственности за любые убытки, причиненные в результате тестирования.
 
+                p#bottom.error Все поля являются обязательными
                 input(type='submit', value='Отправить')
             .thanks.center
                 h2 Спасибо!
+                    br
                     br
                     | Мы свяжемся с вами, когда начнется тестирование.
 
@@ -65,4 +67,4 @@ html
             script.
                 var phones = "!{phones}".split( ';' );
                 var url = '!{url}';
-            script(src=route.PREFIX + '/public/js/subscribe.js')
+            script(src=route.PREFIX + '/public/js/cloud-subscribe.js')

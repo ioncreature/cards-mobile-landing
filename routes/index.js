@@ -77,7 +77,7 @@ router
 
 
 router.get( route.SUBSCRIBE_FORM, function( req, res ){
-    res.render( 'subscribe-form', {
+    res.render( 'cloud-subscribe', {
         url: route.PREFIX + route.SUBSCRIBE_FORM,
         phones: subscribePhonesString,
         data: {}
@@ -96,8 +96,6 @@ router.post( route.SUBSCRIBE_FORM, function( req, res ){
         comment = b.comment,
         agree = b.agree;
 
-    console.log( b );
-
     if ( name && email && phone && model && version && imei && comment && agree ){
         fs.appendFile( config.cloudSubscribers, JSON.stringify({
             date: new Date,
@@ -109,10 +107,10 @@ router.post( route.SUBSCRIBE_FORM, function( req, res ){
             imei: imei,
             comment: comment
         }) + '\n', util.noop );
-        res.render( 'subscribe-form', {thanks: true} );
+        res.render( 'cloud-subscribe', {thanks: true} );
     }
     else
-        res.render( 'subscribe-form', {
+        res.render( 'cloud-subscribe', {
             url: route.PREFIX + route.SUBSCRIBE_FORM,
             error: 'Все поля являются обязательными',
             phones: subscribePhonesString,

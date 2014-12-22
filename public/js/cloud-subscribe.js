@@ -29,6 +29,15 @@ $( function(){
         return val && val !== 'other';
     };
 
+    version.setError = function(){
+        version.focus();
+        version.parent().parent().addClass( 'error' );
+    };
+
+    version.removeError = function(){
+        version.parent().parent().removeClass( 'error' );
+    };
+
     agree.isValid = function(){
         return agree.is(':checked');
     };
@@ -72,6 +81,7 @@ $( function(){
             if ( valid )
                 return true;
             else {
+                $( 'p#bottom' ).show();
                 if ( elem.setError )
                     elem.setError();
                 else
@@ -95,6 +105,7 @@ $( function(){
     }
 
     function removeErrors(){
+        $( 'p#bottom' ).hide();
         [].slice.call( arguments ).forEach( function( elem ){
             elem.removeClass( 'error' );
             elem.removeError && elem.removeError();
