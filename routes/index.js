@@ -3,6 +3,8 @@
  * @date July 2014
  */
 
+require('date-utils');
+
 var router = require( 'express' ).Router(),
     fs = require( 'fs' ),
     registry = require( '../lib/registry' ),
@@ -122,8 +124,58 @@ router.post( route.SUBSCRIBE_FORM, function( req, res ){
 router
     .use( route.SUBSCRIBE_FORM_DATA, basicAuth(config.login, config.password) )
     .get( route.SUBSCRIBE_FORM_DATA, function( req, res ){
-        res.type = 'text/plain';
-        res.sendFile( config.cloudSubscribers );
+        var from = req.query.from,
+            date;
+
+        if ( from === 'today' )
+            date = Date.today();
+        else if ( from === 'yesterday' )
+            date = Date.yesterday();
+        else {
+            var d = new Date( from );
+            if ( !isNaN(d.getTime()) )
+                date = new Date( from );
+        }
+
+        res.type( 'text/plain' );
+        console.log( date );
+        if ( date ){
+            var list = fs.readFileSync( config.cloudSubscribers, {encoding: 'utf8'} ).split( '\n' ),
+                bom = '\uFEFF',
+                csv = list
+                    .map( function( line ){
+                        try {
+                            return JSON.parse( line );
+                        }
+                        catch( e ){
+                            console.log( e );
+                            console.log( line );
+                            return undefined;
+                        }
+                    })
+                    .filter( function( item ){
+                        if ( !item )
+                            return false;
+                        else
+                            return date < new Date( item.date );
+                    })
+                    .map( function( item ){
+                        return '"' + [
+                            item.date,
+                            item.name,
+                            item.email,
+                            item.phone,
+                            item.version,
+                            item.imei,
+                            JSON.stringify( item.comment )
+                        ].join( '","' ) + '"';
+                    })
+                    .join( '\n' );
+
+            res.send( bom + csv );
+        }
+        else
+            res.sendFile( config.cloudSubscribers );
     });
 
 

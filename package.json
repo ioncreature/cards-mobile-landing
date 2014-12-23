@@ -18,7 +18,8 @@
         "jsdom": "*",
         "nodemailer": "1.3.x",
         "nodemailer-direct-transport": "*",
-        "basic-auth-connect": "1.x.x"
+        "basic-auth-connect": "1.x.x",
+        "date-utils": "1.2.x"
     },
     "engines": {
         "node": "0.10.x"
