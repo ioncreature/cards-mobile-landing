@@ -125,21 +125,44 @@ router
     .use( route.SUBSCRIBE_FORM_DATA, basicAuth(config.login, config.password) )
     .get( route.SUBSCRIBE_FORM_DATA, function( req, res ){
         var from = req.query.from,
-            date;
+            to = req.query.to,
+            date = req.query.date,
+            toDate,
+            fromDate;
 
-        if ( from === 'today' )
-            date = Date.today();
-        else if ( from === 'yesterday' )
-            date = Date.yesterday();
-        else {
-            var d = new Date( from );
-            if ( !isNaN(d.getTime()) )
-                date = new Date( from );
+        if ( date && Date.isValid(date) ){
+            fromDate = new Date( date );
+            fromDate.toStartOfDay();
+
+            toDate = new Date( date );
+            toDate.toEndOfDay();
+        }
+        else if ( from || to ){
+            if ( from === 'today' )
+                fromDate = Date.today();
+            else if ( from === 'yesterday' )
+                fromDate = Date.yesterday();
+            else if ( Date.isValid(from) )
+                fromDate = new Date( from );
+
+            if ( to === 'today' )
+                toDate = Date.today().toEndOfDay();
+            else if ( to === 'yesterday' )
+                toDate = Date.yesterday().toEndOfDay();
+            else if ( Date.isValid(to) )
+                toDate = new Date( to );
+
+            if ( fromDate && toDate && fromDate > toDate ){
+                var tmp = fromDate;
+                fromDate = toDate;
+                toDate = tmp;
+                fromDate.toStartOfDay();
+                toDate.toEndOfDay();
+            }
         }
 
         res.type( 'text/plain' );
-        console.log( date );
-        if ( date ){
+        if ( fromDate || toDate ){
             var list = fs.readFileSync( config.cloudSubscribers, {encoding: 'utf8'} ).split( '\n' ),
                 bom = '\uFEFF',
                 csv = list
@@ -156,8 +179,17 @@ router
                     .filter( function( item ){
                         if ( !item )
                             return false;
-                        else
-                            return date < new Date( item.date );
+                        else {
+                            var ok = true;
+
+                            if ( fromDate )
+                                ok = fromDate <= new Date( item.date );
+
+                            if ( ok && toDate )
+                                ok = toDate >= new Date( item.date );
+
+                            return ok;
+                        }
                     })
                     .map( function( item ){
                         return '"' + [
@@ -168,7 +200,7 @@ router
                             item.version,
                             item.imei,
                             JSON.stringify( item.comment )
-                        ].join( '","' ) + '"';
+                        ].join( '";"' ) + '"';
                     })
                     .join( '\n' );
 
