@@ -198,9 +198,8 @@ router
                             item.email,
                             item.phone,
                             item.version,
-                            item.imei,
-                            JSON.stringify( item.comment )
-                        ].join( '";"' ) + '"';
+                            item.imei
+                        ].join( '";"' ) + '";' + JSON.stringify( item.comment );
                     })
                     .join( '\n' );
 
