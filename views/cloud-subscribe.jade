@@ -5,7 +5,7 @@ doctype html
 html
     head
         meta(charset='UTF-8')
-        meta(name="viewport", content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no")
+        meta(name='viewport', content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no')
         link(rel='stylesheet', href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,300,600&subset=latin,cyrillic')
         link(rel='stylesheet', href=route.PREFIX + '/public/css/cloud-subscribe.css')
     body
@@ -52,7 +52,7 @@ html
                 label
                     input(type='checkbox', name='agree', value='yo!', checked=!!data.agree)
                     | Я согласен &nbsp;
-                    a(href='/cloud/terms.pdf') с соглашением о неразглашении информации
+                    a(href='/cloud/terms.pdf', target='_blank') с соглашением о неразглашении информации
                     |, а так же с тем,
                     | что организатор тестирования не несет никакой ответственности за любые убытки, причиненные в результате тестирования.
 
