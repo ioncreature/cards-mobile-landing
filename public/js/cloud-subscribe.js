@@ -62,7 +62,7 @@ $( function(){
                 type: 'POST',
                 data: {
                     name: name.val(),
-                    model: otherModel.val() || model.val(),
+                    model: model.val() === 'other' ? otherModel.val() : model.val(),
                     email: email.val(),
                     phone: phone.val(),
                     version: version.val(),

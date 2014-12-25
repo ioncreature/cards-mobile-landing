@@ -51,13 +51,7 @@ router.post( route.INDEX, function( req, res ){
 
     if ( model && email ){
         fs.appendFile( config.subscribers, JSON.stringify([(new Date).toISOString(), email, model, ua]) + '\n', util.noop );
-        sendMail( email, function( error, status ){
-            if ( error )
-                console.log( 'Error sending mail to %s \n%s', email, error );
-            else
-                console.log( 'Mail to %s successfully sent', email );
-            console.log( 'status', status );
-        });
+        sendMail( email, console.log );
     }
 
     res.end();
@@ -110,6 +104,7 @@ router.post( route.SUBSCRIBE_FORM, function( req, res ){
             comment: comment
         }) + '\n', util.noop );
         res.render( 'cloud-subscribe', {thanks: true} );
+        sendCloudMail( email, console.log );
     }
     else
         res.render( 'cloud-subscribe', {
@@ -230,10 +225,7 @@ router.post( route.PRESSKIT_SUBSCRIBE, function( req, res ){
             to: config.presskitTo,
             subject: 'Новый подписчик, аее!',
             text: email
-        }, function( error, status ){
-            console.log( email );
-            console.log( error, status );
-        });
+        }, console.log );
 
     res.end();
 });
@@ -278,8 +270,22 @@ function sendMail( email, callback ){
     transport.sendMail({
         from: 'Приложение «Кошелёк» <support@cardsmobile.ru>',
         to: email,
-        subject: ' Благодарим за вашу заявку',
+        subject: 'Благодарим за вашу заявку',
         html: sendMail.html
+    }, callback );
+}
+
+function sendCloudMail( email, callback ){
+    var transport = mailer.createTransport( directTransport({retryDelay: 1000, name: this.hostname}) );
+
+    if ( !sendCloudMail.html )
+        sendCloudMail.html = fs.readFileSync( join(__dirname, '../views/mail-cloud.html'), {encoding: 'utf8'} );
+
+    transport.sendMail({
+        from: 'Приложение «Кошелёк» <support@cardsmobile.ru>',
+        to: email,
+        subject: 'Заявка на участие в тестировании принята',
+        html: sendCloudMail.html
     }, callback );
 }
 
