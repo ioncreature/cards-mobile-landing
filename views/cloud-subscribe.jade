@@ -29,9 +29,10 @@ html
 
                 select(name='model', placeholder='Модель телефона')
                     option(value='') Модель телефона
-                    option(value='other') Другая модель...
+                    option(value='other') Другая модель
                 input(type='text', name='otherModel', placeholder='Модель телефона')
-                small Версии приложения могут различаться в зависимости от модели телефона.
+                small.for-other-model Телефон должен быть с NFC-антенной и Android 4.4 KitKat или выше.
+                small.for-model Версии приложения могут различаться в зависимости от модели телефона.
 
                 .version
                     label

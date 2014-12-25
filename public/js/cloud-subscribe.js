@@ -124,7 +124,7 @@ $( function(){
             return '<option value="' + item + '">' + item + '</option>';
         }).join( '' );
 
-        model.append( options );
+        model.find( 'option:first-child' ).after( options );
     }
 
     version.change( function(){
@@ -138,10 +138,14 @@ $( function(){
     model.change( function(){
         if ( model.val() === 'other' ){
             otherModel.show();
+            $( '.for-model' ).hide();
+            $( '.for-other-model' ).removeClass( 'hidden' );
             model.addClass( 'sticky' );
         }
         else {
             otherModel.hide();
+            $( '.for-model' ).show();
+            $( '.for-other-model' ).addClass( 'hidden' );
             model.removeClass( 'sticky' );
         }
     });
