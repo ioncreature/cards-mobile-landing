@@ -29,6 +29,8 @@ html
 
                 select(name='model', placeholder='Модель телефона')
                     option(value='') Модель телефона
+                    option(value='other') Другая модель...
+                input(type='text', name='otherModel', placeholder='Модель телефона')
                 small Версии приложения могут различаться в зависимости от модели телефона.
 
                 .version
@@ -52,7 +54,8 @@ html
                 label
                     input(type='checkbox', name='agree', value='yo!', checked=!!data.agree)
                     | Я согласен &nbsp;
-                    a(href='/cloud/terms.pdf', target='_blank') с соглашением о неразглашении информации
+                    noindex
+                        a(href='/cloud/terms.pdf', target='_blank') с соглашением о неразглашении информации
                     |, а так же с тем,
                     | что организатор тестирования не несет никакой ответственности за любые убытки, причиненные в результате тестирования.
 

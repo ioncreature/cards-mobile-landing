@@ -9,6 +9,7 @@ $( function(){
         email = form.find( 'input[type="email"]' ),
         phone = form.find( 'input[name="phone"]' ),
         model = form.find( 'select[name="model"]' ),
+        otherModel = form.find( 'input[name="otherModel"]' ),
         version = form.find( 'input[name="version"]' ),
         imei = form.find( 'input[name="imei"]' ),
         comment = form.find( 'textarea[name="comment"]' ),
@@ -17,11 +18,15 @@ $( function(){
         otherOsError = $( '#other-os-error' );
 
     $( 'input, select, textarea' ).on( 'keyup change', function(){
-        removeErrors( name, email, phone, model, version, imei, comment, agree );
+        removeErrors( name, email, phone, model, otherModel, version, imei, comment, agree );
     });
 
     email.isValid = function(){
         return isEmail( email.val() );
+    };
+
+    otherModel.isValid = function(){
+        return model.val() === 'other' ? !!otherModel.val() : true;
     };
 
     version.isValid = function(){
@@ -57,7 +62,7 @@ $( function(){
                 type: 'POST',
                 data: {
                     name: name.val(),
-                    model: model.val(),
+                    model: otherModel.val() || model.val(),
                     email: email.val(),
                     phone: phone.val(),
                     version: version.val(),
@@ -75,9 +80,9 @@ $( function(){
     });
 
     function isValid(){
-        removeErrors( name, email, phone, model, version, imei, comment, agree );
+        removeErrors( name, email, phone, model, otherModel, version, imei, comment, agree );
 
-        return [name, email, phone, model, version, imei, comment, agree].every( function( elem ){
+        return [name, email, phone, model, otherModel, version, imei, comment, agree].every( function( elem ){
             var valid = elem.isValid ? elem.isValid() : !!elem.val();
             if ( valid )
                 return true;
@@ -127,5 +132,17 @@ $( function(){
             otherOsError.show();
         else
             otherOsError.hide();
+    });
+
+
+    model.change( function(){
+        if ( model.val() === 'other' ){
+            otherModel.show();
+            model.addClass( 'sticky' );
+        }
+        else {
+            otherModel.hide();
+            model.removeClass( 'sticky' );
+        }
     });
 });
