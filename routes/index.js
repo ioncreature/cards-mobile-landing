@@ -197,6 +197,7 @@ router
                             item.name,
                             item.email,
                             item.phone,
+                            item.model,
                             item.version,
                             item.imei
                         ].join( '";"' ) + '";' + JSON.stringify( item.comment );
