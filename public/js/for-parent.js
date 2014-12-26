@@ -8,8 +8,10 @@ var eventMethod = window.addEventListener ? "addEventListener" : "attachEvent",
     messageEvent = eventMethod == "attachEvent" ? "onmessage" : "message",
     iframe = document.getElementById( 'ourframe' );
 
-eventer( messageEvent, function(){
-    iframe.style.height = '200px';
-    iframe.scrollIntoView( true );
+eventer( messageEvent, function( message ){
+    if ( message === "Пыщ-пыщ" ){
+        iframe.style.height = '200px';
+        iframe.scrollIntoView( true );
+    }
 }, false );
 
