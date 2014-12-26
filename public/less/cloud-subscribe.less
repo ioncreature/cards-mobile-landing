@@ -4,6 +4,7 @@
  */
 
 @font-family: 'Open Sans', sans-serif;
+@border-color: white;
 
 * {
     box-sizing: border-box;
@@ -65,7 +66,7 @@ form {
         display: block;
         width: 100%;
         padding: 12px 15px;
-        border: 1px solid #aaa;
+        border: 1px solid @border-color;
         border-radius: 4px;
         font-family: inherit;
         font-size: inherit;
@@ -116,13 +117,13 @@ form {
     small {
         display: block;
         margin: 0.25em 0 20px 1em;
-        color: grey;
+        color: black;
         font-style: italic;
     }
 
     .version {
         padding: 12px 15px;
-        border: 1px solid #aaa;
+        border: 1px solid @border-color;
         border-radius: 4px;
         text-align: center;
         background-color: white;
