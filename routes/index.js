@@ -197,7 +197,7 @@ router
                             item.model,
                             item.version,
                             item.imei
-                        ].join( '";"' ) + '";' + JSON.stringify( item.comment ) + ';"' + item.city + '"';
+                        ].join( '";"' ) + '";' + JSON.stringify( item.comment ) + ';"' + (item.city || '') + '"';
                     })
                     .join( '\n' );
 
