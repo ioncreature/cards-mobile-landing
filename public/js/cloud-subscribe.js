@@ -82,7 +82,7 @@ $( function(){
     });
 
     function isValid(){
-        removeErrors( name, email, phone, model, otherModel, version, imei, comment, agree );
+        removeErrors( name, city, email, phone, model, otherModel, version, imei, comment, agree );
 
         return [name, email, phone, model, otherModel, version, imei, comment, agree].every( function( elem ){
             var valid = elem.isValid ? elem.isValid() : !!elem.val();
