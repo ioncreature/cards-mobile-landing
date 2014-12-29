@@ -90,9 +90,10 @@ router.post( route.SUBSCRIBE_FORM, function( req, res ){
         version = b.version,
         imei = b.imei,
         comment = b.comment,
+        city = b.city,
         agree = b.agree;
 
-    if ( name && email && phone && model && version && imei && comment && agree ){
+    if ( name && email && phone && model && version && imei && comment && agree && city ){
         fs.appendFile( config.cloudSubscribers, JSON.stringify({
             date: new Date,
             name: name,
@@ -101,7 +102,8 @@ router.post( route.SUBSCRIBE_FORM, function( req, res ){
             model: model,
             version: version,
             imei: imei,
-            comment: comment
+            comment: comment,
+            city: city
         }) + '\n', util.noop );
         res.render( 'cloud-subscribe', {thanks: true} );
         sendCloudMail( email, console.log );
@@ -195,7 +197,7 @@ router
                             item.model,
                             item.version,
                             item.imei
-                        ].join( '";"' ) + '";' + JSON.stringify( item.comment );
+                        ].join( '";"' ) + '";' + JSON.stringify( item.comment ) + ';"' + item.city + '"';
                     })
                     .join( '\n' );
 

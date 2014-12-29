@@ -7,6 +7,7 @@ html
         meta(charset='UTF-8')
         meta(name='viewport', content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no')
         link(rel='stylesheet', href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,300,600&subset=latin,cyrillic')
+        link(rel='stylesheet', href=route.PREFIX + '/public/bower/jquery.kladr/jquery.kladr.min.css')
         link(rel='stylesheet', href=route.PREFIX + '/public/css/cloud-subscribe.css')
     body
         if thanks
@@ -20,6 +21,9 @@ html
                     p.error= error
                 input(type='text', name='name', placeholder='Имя', value=data.name || '')
                 small Для того, чтобы мы знали как к вам обращаться.
+
+                input(type='text', name='city', placeholder='Город', value=data.city || '')
+                small Мы хотим набрать участников тестирования из разных регионов.
 
                 input(type='email', name='email', placeholder='E-mail', value=data.email || '')
                 small На этот адрес мы отправим вам ссылку для скачивания приложения.
@@ -69,6 +73,7 @@ html
                     | Мы свяжемся с вами, когда начнется тестирование.
 
             script(src='//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js')
+            script(src=route.PREFIX + '/public/bower/jquery.kladr/jquery.kladr.min.js')
             script.
                 var phones = "!{phones}".split( ';' );
                 var url = '!{url}';

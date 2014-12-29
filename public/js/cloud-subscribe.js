@@ -6,6 +6,7 @@
 $( function(){
     var form = $( 'form' ),
         name = form.find( 'input[name="name"]' ),
+        city = form.find( 'input[name="city"]' ),
         email = form.find( 'input[type="email"]' ),
         phone = form.find( 'input[name="phone"]' ),
         model = form.find( 'select[name="model"]' ),
@@ -18,7 +19,7 @@ $( function(){
         otherOsError = $( '#other-os-error' );
 
     $( 'input, select, textarea' ).on( 'keyup change', function(){
-        removeErrors( name, email, phone, model, otherModel, version, imei, comment, agree );
+        removeErrors( name, city, email, phone, model, otherModel, version, imei, comment, agree );
     });
 
     email.isValid = function(){
@@ -68,7 +69,8 @@ $( function(){
                     version: version.val(),
                     imei: imei.val(),
                     comment: comment.val(),
-                    agree: agree.is( ':checked' ) ? agree.val() : ''
+                    agree: agree.is( ':checked' ) ? agree.val() : '',
+                    city: city.val()
                 }
             });
             form.hide();
@@ -148,5 +150,10 @@ $( function(){
             $( '.for-other-model' ).addClass( 'hidden' );
             model.removeClass( 'sticky' );
         }
+    });
+
+    city.kladr({
+        token: '54a15f8c7c523999148b4567',
+        type: 'city'
     });
 });

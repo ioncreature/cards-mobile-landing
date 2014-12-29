@@ -9,7 +9,7 @@ var eventMethod = window.addEventListener ? "addEventListener" : "attachEvent",
     iframe = document.getElementById( 'ourframe' );
 
 eventer( messageEvent, function( message ){
-    if ( message === "Пыщ-пыщ" ){
+    if ( message.data === "Пыщ-пыщ" ){
         iframe.style.height = '200px';
         iframe.scrollIntoView( true );
     }
