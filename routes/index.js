@@ -321,5 +321,5 @@ isFirefox.chromeRe = /Chrome/;
 isFirefox.firefoxRe = /Firefox/;
 function isFirefox( ua ){
     var f = isFirefox;
-    return f.chromeRe.test( ua ) && f.firefoxRe.test( ua );
+    return !f.chromeRe.test( ua ) && f.firefoxRe.test( ua );
 }

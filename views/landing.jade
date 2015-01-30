@@ -56,7 +56,15 @@ html(lang='en')
                             p Нет ссылки для скачивания
                 else if notSupported
                     .row.mobile
-                        h2 Извините, Ваш браузер не поддерживается. Попробуйте открыть эту страницу из Google Chrome или Apple Safari
+                        p.not-supported Лена, извини, твой браузер не поддерживается.
+                            br
+                            b :(
+                            br
+                            | Попробуй открыть эту страницу из Google Chrome или Apple Safari
+                        //p.not-supported
+                            | Извините, Ваш браузер не поддерживается.
+                            br
+                            | Попробуйте открыть эту страницу из Google Chrome или Apple Safari
                 else
                     .row.mobile
                         p
