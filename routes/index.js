@@ -37,7 +37,8 @@ router.get( route.INDEX, function( req, res ){
         res.render( 'landing', {
             isMobile: isMobile,
             modelName: modelName,
-            url: modelName ? config.appUrls[modelName] : ''
+            url: modelName ? config.appUrls[modelName] : '',
+            notSupported: isFirefox( ua )
         });
     else
         res.render( 'desktop', {phones: phonesString} );
@@ -313,4 +314,12 @@ function loadCloudPhonesString(){
         console.log( error );
         return '[]';
     }
+}
+
+
+isFirefox.chromeRe = /Chrome/;
+isFirefox.firefoxRe = /Firefox/;
+function isFirefox( ua ){
+    var f = isFirefox;
+    return f.chromeRe.test( ua ) && f.firefoxRe.test( ua );
 }
