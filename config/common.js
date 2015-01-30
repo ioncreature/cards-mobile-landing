@@ -32,6 +32,7 @@ exports.modelAliases = {
     'c6603': 'Sony Xperia Z',
     'htc one m7': 'HTC One M7',
     'htc one m7 dual sim': 'HTC One M7',
+    'rv:35.0': 'HTC One M8',
     'htc one m8': 'HTC One M8',
     'htc one m8 dual sim': 'HTC One M8',
     'htc one': 'HTC One',
@@ -52,7 +53,7 @@ exports.modelAliases = {
 
 exports.appUrls = {
     'Sony Xperia Z': 'http://apk-updater.cardsmobile.ru/resource-updater/loader/wallet/getAPK.apk?package=com.beskontakt.mobilewallet.sony&device=C6603&version=25204040',
-    'HTC One M8': 'http://apk-updater.cardsmobile.ru/resource-updater/loader/wallet/getAPK.apk?package=com.beskontakt.mobilewallet&device=HTC%20One&version=25204040',
+    'HTC One M8': 'http://apk-updater.cardsmobile.ru/resource-updater/loader/wallet/getAPK.apk?package=com.beskontakt.mobilewallet&device=HTC%20One_M8&version=25304040',
     'HTC One E8': 'http://apk-updater.cardsmobile.ru/resource-updater/loader/wallet/getAPK.apk?package=com.beskontakt.mobilewallet&device=HTC%20One&version=25204040',
     'HTC One SV': 'http://apk-updater.cardsmobile.ru/resource-updater/loader/wallet/getAPK.apk?package=com.beskontakt.mobilewallet&device=HTC%20One%20SV&version=25204040',
     'HTC One Max': 'http://apk-updater.cardsmobile.ru/resource-updater/loader/wallet/getAPK.apk?package=com.beskontakt.mobilewallet&device=HTC%20One&version=25204040',
