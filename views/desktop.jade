@@ -132,6 +132,25 @@ html
                     | Входит в официальное
                     br
                     | обновление прошивки
+                .block.model
+                    a.google-play-link(href='https://play.google.com/store/apps/details?id=ru.cardsmobile.mw3')
+                        img(src='/download/public/img/google-play-logo.png', width='200', height='65', border='0')
+                        br
+                        Все остальные NFC смартфоны на Android 4.4+
+                    style.
+                        a.google-play-link {
+                            display: block;
+                            -webkit-box-sizing: padding-box;
+                            -moz-box-sizing: padding-box;
+                            box-sizing: padding-box;
+                            width: 200px;
+                            height: 300px;
+                            padding: 117px 0 0 0;
+                            text-decoration: none;
+                            color: inherit;
+                        }
+
+
                 .block(style='clear:both;')
                     img(src='https://cardsmobile.ru/misc/spacer.png', width='1', height='80')
         #download-action.slide
@@ -140,21 +159,9 @@ html
                     .text
                         h2 Как загрузить «Кошелёк»
                         p Если ваш телефон входит в список совместимых моделей и официально приобретен в РФ, то приложение «Кошелёк» уже установлено в вашем телефоне.
-                        p Или вы можете скачать приложение, открыв эту страницу с мобильного телефона.
-        .slide
-            .block
-                .text.center
-                    h2
-                        | Мы сообщим вам о появлении «Кошелька»
-                        br
-                        | для вашей модели телефона
-                    form#desktop(action=route.PREFIX + route.INDEX, method='POST')
-                        input(type='text', name='model', placeholder='Ваша модель телефона')
-                        br
-                        input(type='email', name='email', placeholder='Ваш e-mail')
-                        input(type='submit', value='OK')
-                    .row.thanks(style="text-align: center")
-                        h2 Спасибо!
+                        p Или вы можете скачать приложение, перейдя по ссылке ниже.
+                        a(href='https://play.google.com/store/apps/details?id=ru.cardsmobile.mw3')
+                            img(src='/download/public/img/google-play-logo.png', width='200', height='65', border='0')
 
         // FOOTER
         #footer.slide
