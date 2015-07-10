@@ -62,17 +62,14 @@ html(lang='en')
                             | Попробуйте открыть эту страницу из Google Chrome или Apple Safari
                 else
                     .row.mobile
-                        p
-                            | Ваш смартфон
+                        p(style='margin-top: 50px;')
+                            | Скачайте приложение,
                             br
-                            | пока не поддерживается
-                        p
-                            | Узнайте о появлении «Кошелька»
+                            | перейдя по ссылке ниже:
                             br
-                            | для вашего телефона первыми
-                        form#mobile(action=route.PREFIX + route.INDEX, method='POST')
-                            input(type='email', name='email', placeholder='Ваш e-mail', required)
-                            input(type='submit', value='OK')
+                            br
+                            a(href='https://play.google.com/store/apps/details?id=ru.cardsmobile.mw3')
+                                img(src='/download/public/img/google-play-logo.png', width='200', height='65', border='0')
 
             else
                 .row.desktop
@@ -124,7 +121,7 @@ html(lang='en')
                 p
                     | ©
                     a(href='https://cardsmobile.ru')  Приложение «Кошелёк»
-                    |  2014
+                    |  2014-2015
 
         script(src=route.PREFIX + '/public/bower/jquery/dist/jquery.min.js')
         script(src=route.PREFIX + '/public/js/index.js')
